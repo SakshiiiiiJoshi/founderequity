@@ -1,7 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
+
+function Spotlight({ className, fill }) {
+  return (
+    <svg
+      className={`animate-spotlight pointer-events-none absolute z-[1] h-[220%] w-[180%] lg:w-[120%] opacity-0 ${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 3787 2842"
+      fill="none"
+    >
+      <g filter="url(#filter-spotlight)">
+        <ellipse
+          cx="1924.71"
+          cy="273.501"
+          rx="1924.71"
+          ry="273.501"
+          transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
+          fill={fill || "white"}
+          fillOpacity="0.21"
+        ></ellipse>
+      </g>
+      <defs>
+        <filter
+          id="filter-spotlight"
+          x="0.860352"
+          y="0.838989"
+          width="3785.16"
+          height="2840.26"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          ></feBlend>
+          <feGaussianBlur
+            stdDeviation="240"
+            result="effect1_foregroundBlur_1065_8"
+          ></feGaussianBlur>
+        </filter>
+      </defs>
+    </svg>
+  );
+}
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,6 +57,23 @@ export default function Home() {
     email: "",
     message: "",
   });
+
+  // Hero Images auto-cycling list
+  const heroImages = useMemo(() => [
+    { src: "/hero-slide-1.png", alt: "Business Partnership Meeting Handshake" },
+    { src: "/hero-slide-2.png", alt: "Financial Analyst Pointing to Tablet Charts" },
+    { src: "/hero-slide-3.png", alt: "Modern Corporate Skyscrapers" },
+    { src: "/hero-slide-4.png", alt: "Financial Market Analytics Data Chart" }
+  ], []);
+  
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
@@ -27,32 +90,32 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-accent-light selection:text-primary">
       
       {/* Navbar Section */}
-      <header className="sticky top-0 z-50 w-full border-b border-subtle bg-glass backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
+      <header className="absolute top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl items-center justify-between bg-white/95 backdrop-blur-md px-6 py-1.5 rounded-full border border-palette-slate/30 shadow-[0_10px_30px_rgba(56,73,89,0.12)] w-full transition-all duration-300">
           {/* Logo 1 - Wordmark + Icon */}
-          <a href="#home" className="flex items-center gap-3 transition-opacity hover:opacity-90">
+          <a href="#home" className="flex items-center gap-3 transition-opacity hover:opacity-90 pl-1">
             <Image
               src="/logo-full.png"
               alt="Founder's Equity Logo"
               width={200}
               height={100}
               priority
-              className="h-14 w-auto object-contain"
+              className="h-14 w-auto object-contain py-1 mix-blend-multiply"
             />
           </a>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-            <a href="#home" className="transition-colors hover:text-primary">
+          <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-palette-dark/85">
+            <a href="#home" className="transition-colors hover:text-accent">
               Home
             </a>
-            <a href="#about" className="transition-colors hover:text-primary">
+            <a href="#about" className="transition-colors hover:text-accent">
               About
             </a>
-            <a href="#service" className="transition-colors hover:text-primary">
+            <a href="#service" className="transition-colors hover:text-accent">
               Service
             </a>
-            <a href="#contact" className="transition-colors hover:text-primary">
+            <a href="#contact" className="transition-colors hover:text-accent">
               Contact Us
             </a>
           </nav>
@@ -61,24 +124,24 @@ export default function Home() {
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              className="rounded-full bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-background shadow-sm transition-all hover:bg-primary-hover hover:shadow-md"
+              className="rounded-full bg-gradient-to-r from-palette-dark to-palette-slate px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider text-background shadow-[0_4px_12px_rgba(56,73,89,0.25)] transition-all hover:shadow-[0_6px_20px_rgba(56,73,89,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
             >
-              Get in Touch
+              Get in Touch <span className="text-xs">➔</span>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 focus:outline-none md:hidden"
+            className="rounded-full p-2 text-palette-dark hover:bg-slate-100 focus:outline-none md:hidden mr-1"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -87,42 +150,42 @@ export default function Home() {
 
         {/* Mobile Navigation Panel */}
         {mobileMenuOpen && (
-          <div className="border-t border-subtle bg-background px-6 py-4 md:hidden">
-            <nav className="flex flex-col gap-4 text-base font-semibold text-slate-600">
+          <div className="absolute top-18 left-4 right-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-palette-slate/30 shadow-xl md:hidden animate-in fade-in slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-palette-dark/85">
               <a
                 href="#home"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-primary"
+                className="py-2 hover:text-accent border-b border-slate-100"
               >
                 Home
               </a>
               <a
                 href="#about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-primary"
+                className="py-2 hover:text-accent border-b border-slate-100"
               >
                 About
               </a>
               <a
                 href="#service"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-primary"
+                className="py-2 hover:text-accent border-b border-slate-100"
               >
                 Service
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-primary"
+                className="py-2 hover:text-accent border-b border-slate-100"
               >
                 Contact Us
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 w-full text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wider text-background shadow-sm hover:bg-primary-hover"
+                className="mt-2 w-full text-center rounded-full bg-gradient-to-r from-palette-dark to-palette-slate py-3 text-xs font-bold uppercase tracking-wider text-background shadow-md flex items-center justify-center gap-2"
               >
-                Get in Touch
+                Get in Touch <span>➔</span>
               </a>
             </nav>
           </div>
@@ -132,125 +195,63 @@ export default function Home() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section id="home" className="relative overflow-hidden px-6 pt-16 pb-20 sm:px-8 lg:px-12 lg:pt-24 lg:pb-32">
+        <section id="home" className="relative overflow-hidden px-6 pt-32 pb-20 sm:px-8 lg:px-12 lg:pt-48 lg:pb-32 bg-palette-dark">
+          {/* Spotlight overlay - positioned globally in the section background to cover the whole text without clipping */}
+          <Spotlight className="-top-40 left-0 md:left-10 lg:left-20 md:-top-20" fill="white" />
+
           {/* Subtle gradient shapes in background */}
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-40 right-1/4 h-[600px] w-[600px] rounded-full bg-primary-light/35 blur-3xl" />
-            <div className="absolute -bottom-20 left-10 h-[400px] w-[400px] rounded-full bg-accent-light/45 blur-3xl" />
+            <div className="absolute -top-40 right-1/4 h-[600px] w-[600px] rounded-full bg-primary-light/10 blur-3xl" />
+            <div className="absolute -bottom-20 left-10 h-[400px] w-[400px] rounded-full bg-accent-light/15 blur-3xl" />
           </div>
 
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
               
               {/* Hero Text */}
-              <div className="flex flex-col text-center lg:col-span-7 lg:text-left">
-                <div className="inline-flex items-center justify-center self-center rounded-full bg-accent-light px-4 py-1.5 text-xs font-bold tracking-wide text-primary lg:self-start">
-            
-                </div>
-                <h1 className="font-serif-heading mt-6 text-4xl font-bold leading-tight tracking-tight text-primary sm:text-5xl lg:text-6xl uppercase">
+              <div className="relative flex flex-col text-center lg:col-span-6 lg:text-left">
+                <h1 className="font-serif-heading mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl uppercase relative z-10">
                   Your numbers have a story,<br />
                   we make sure investors believe it.
                 </h1>
-                
-                {/* Custom SVG flow diagram matching notebook sketch */}
-                <div className="mt-10 mb-6 flex flex-col items-center justify-center lg:items-start lg:justify-start gap-4">
-                  <div className="flex items-center gap-4 bg-white/60 backdrop-blur-sm px-6 py-3 rounded-2xl border border-subtle shadow-sm">
-                    {/* Pulsing loading circle representation */}
-                    <div className="relative flex h-6 w-6 items-center justify-center">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-30"></span>
-                      <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-accent"></span>
-                    </div>
-                    
-                    {/* Animated connecting line */}
-                    <svg className="w-12 h-2" viewBox="0 0 50 8" fill="none">
-                      <path d="M0 4H50" stroke="#6A89A7" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_2s_linear_infinite]" />
-                    </svg>
-
-                    {/* FE Circle badge */}
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background font-bold text-xs">
-                      FE
-                    </div>
-
-                    {/* Connecting line */}
-                    <svg className="w-12 h-2" viewBox="0 0 50 8" fill="none">
-                      <path d="M0 4H50" stroke="#6A89A7" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_2s_linear_infinite]" />
-                    </svg>
-
-                    {/* Bain Capital Ventures text */}
-                    <span className="text-xs font-bold tracking-wider text-primary uppercase">
-                      Bain Capital Ventures
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 italic max-w-sm">
-                    Aligning founder metrics with premier venture firms.
-                  </p>
-                </div>
 
                 <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
                   <a
                     href="#contact"
-                    className="rounded-full bg-primary px-8 py-4 text-sm font-semibold text-background shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-xl"
+                    className="rounded-full bg-palette-ice px-8 py-4 text-sm font-semibold text-primary shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-white hover:shadow-xl relative z-10"
                   >
                     Schedule Consultation
                   </a>
                   <a
                     href="#about"
-                    className="rounded-full border border-slate-300 bg-white px-8 py-4 text-sm font-semibold text-slate-700 shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-slate-50 hover:text-primary"
+                    className="rounded-full border border-white/30 bg-transparent px-8 py-4 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:text-white relative z-10"
                   >
                     What &amp; Who We Are
                   </a>
                 </div>
               </div>
 
-              {/* Hero Graphic - Premium Glassmorphic Card */}
-              <div className="lg:col-span-5">
-                <div className="relative rounded-2xl border border-palette-slate bg-palette-ice p-8 shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-light">
+              {/* Hero Graphic - Clean Auto-cycling Image Slideshow without Text */}
+              <div className="lg:col-span-6 w-full flex items-center justify-end">
+                <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[440px] rounded-2xl border border-palette-slate bg-palette-ice shadow-2xl overflow-hidden">
+                  {/* Cycling Image Container with Fade Transition */}
+                  {heroImages.map((img, idx) => (
+                    <div
+                      key={idx}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        activeImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+                      }`}
+                    >
                       <Image
-                        src="/logo-icon.png"
-                        alt="Founder's Equity Icon"
-                        width={28}
-                        height={28}
-                        className="h-6 w-auto object-contain"
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-w-md) 100vw, 500px"
+                        className="object-cover"
+                        priority={idx === 0}
                       />
                     </div>
-                    <div>
-                      <h3 className="font-serif-heading text-base font-bold text-primary">Founder's Equity</h3>
-                      <p className="text-xs text-slate-600 font-semibold">Valuation &amp; Capital Advisory</p>
-                    </div>
-                  </div>
-
-                  {/* Clean abstract layout representing growth */}
-                  <div className="mt-8 space-y-6">
-                    <div className="rounded-lg bg-white p-4 border border-subtle">
-                      <div className="flex justify-between text-xs text-slate-500 font-semibold">
-                        <span>Equity Structure Optimization</span>
-                        <span className="text-accent font-bold">Aligned</span>
-                      </div>
-                      <div className="mt-2.5 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                        <div className="h-full bg-primary rounded-full" style={{ width: "85%" }} />
-                      </div>
-                    </div>
-
-                    <div className="rounded-lg bg-white p-4 border border-subtle">
-                      <div className="flex justify-between text-xs text-slate-500 font-semibold">
-                        <span>Vesting &amp; Dilution Modeling</span>
-                        <span className="text-accent font-bold">Clear</span>
-                      </div>
-                      <div className="mt-2.5 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                        <div className="h-full bg-accent rounded-full" style={{ width: "95%" }} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 border-t border-slate-300 pt-6">
-                    <p className="text-xs font-bold uppercase tracking-wider text-primary opacity-80">Institutional Strategy</p>
-                    <p className="font-serif-heading mt-1 text-2xl font-bold text-primary">Strategic Alignment</p>
-                    <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                      We model complex exit scenarios, option pools, and cap table cascades to secure your financial legacy.
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -263,7 +264,6 @@ export default function Home() {
           <div className="mx-auto max-w-4xl">
             {/* Header */}
             <div className="text-center">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-accent">Philosophy</h2>
               <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
                 What &amp; Who we are...
               </p>
