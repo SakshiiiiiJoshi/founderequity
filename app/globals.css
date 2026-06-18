@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9F6;
+  --foreground: #1E293B;
+  
+  --primary: #152A4A;
+  --primary-hover: #0E1D33;
+  --primary-light: #E8EEF6;
+  
+  --accent: #B59468;
+  --accent-hover: #9E7D53;
+  --accent-light: #F5EFE6;
+  
+  /* User-provided colors for backgrounds and cards */
+  --palette-slate: #6A89A7;
+  --palette-ice: #BDDDFC;
+  --palette-sky: #88BDF2;
+  --palette-dark: #384959;
+  
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  
+  --color-palette-slate: var(--palette-slate);
+  --color-palette-ice: var(--palette-ice);
+  --color-palette-sky: var(--palette-sky);
+  --color-palette-dark: var(--palette-dark);
+  
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities */
+.font-serif-heading {
+  font-family: var(--font-serif);
+}
+
+.bg-glass {
+  background-color: rgba(250, 249, 246, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.border-subtle {
+  border-color: rgba(21, 42, 74, 0.08);
+}
