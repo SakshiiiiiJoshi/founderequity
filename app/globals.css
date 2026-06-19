@@ -218,3 +218,55 @@ body {
     @apply font-sans;
   }
 }
+
+/* Custom Styles for reference images */
+.hero-radial-bg {
+  background-color: #0b0c0e;
+  background-image: 
+    radial-gradient(circle at 90% 10%, rgba(189, 221, 252, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 10% 90%, rgba(106, 137, 167, 0.08) 0%, transparent 50%);
+}
+
+.glassmorphic-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glassmorphic-card-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-indicator-pulse {
+  animation: scroll-pulse 2s infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% {
+    transform: translateY(0) translateX(-50%);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(6px) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+.grid-line-glow {
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.05) 10%, rgba(255, 255, 255, 0.05) 90%, transparent);
+}

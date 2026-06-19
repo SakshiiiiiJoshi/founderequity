@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 
 function Spotlight({ className, fill }) {
@@ -58,7 +58,82 @@ export default function Home() {
     message: "",
   });
 
-  // Hero Images auto-cycling list
+  // Dynamic scroll state to track which section is currently in viewport
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "service", "contact"];
+      const scrollPosition = window.scrollY + 220; // Trigger line offset
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Trigger initially
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Intersection Observer state for scroll-reveal transition
+  const aboutRef = useRef(null);
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAboutVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  // Dense ASCII dome data visualization matching the reference image exactly
+  const asciiDome = useMemo(() => {
+    const cols = 90; // Large horizontal resolution
+    const rows = 23; // Large vertical density
+    // Monospace band pattern for realistic ASCII visual scanning lines
+    const rowChars = [
+      "I", "|", "l", "-", "I", "|", "ll", "-", "I", "|", "l", "ll",
+      "I", "|", "l", "-", "I", "|", "ll", "-", "I", "|", "ll"
+    ];
+    
+    const result = [];
+    for (let r = 0; r < rows; r++) {
+      const cells = [];
+      const char = rowChars[r % rowChars.length];
+      for (let c = 0; c < cols; c++) {
+        const dx = (c - (cols / 2)) / (cols / 2); // -1 to 1
+        // Smooth parabolic dome mathematical boundary curve
+        const threshold = Math.pow(Math.abs(dx), 1.7) * rows;
+        if (r >= threshold) {
+          // Opacity fades out radially towards the bottom/sides
+          const dist = Math.sqrt(dx * dx + Math.pow((r - 2) / rows, 2));
+          const opacity = Math.max(0.04, (1.1 - dist) * 0.9);
+          cells.push({ char, opacity });
+        } else {
+          cells.push({ char: " ", opacity: 0 });
+        }
+      }
+      result.push({ cells });
+    }
+    return result;
+  }, []);
+
+  // Hero/About Images list for the about section card slideshow
   const heroImages = useMemo(() => [
     { src: "/hero-slide-1.png", alt: "Business Partnership Meeting Handshake" },
     { src: "/hero-slide-2.png", alt: "Financial Analyst Pointing to Tablet Charts" },
@@ -71,7 +146,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 3500);
+    }, 4000);
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
@@ -90,50 +165,73 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-accent-light selection:text-primary">
       
       {/* Navbar Section */}
-      <header className="absolute top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between bg-white/95 backdrop-blur-md px-6 py-1.5 rounded-full border border-palette-slate/30 shadow-[0_10px_30px_rgba(56,73,89,0.12)] w-full transition-all duration-300">
-          {/* Logo 1 - Wordmark + Icon */}
+      <header className={`fixed top-6 z-50 w-full px-6 sm:px-8 lg:px-12 transition-all duration-500 ${
+        activeSection === "home" ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0 pointer-events-none"
+      }`}>
+        <div className="mx-auto max-w-7xl flex items-center justify-between w-full">
+          
+          {/* Left: Logo (Outside capsule, visible on dark background) */}
           <a href="#home" className="flex items-center gap-3 transition-opacity hover:opacity-90 pl-1">
             <Image
-              src="/logo-full.png"
+              src="/logo-v2.png"
               alt="Founder's Equity Logo"
               width={200}
               height={100}
               priority
-              className="h-14 w-auto object-contain py-1 mix-blend-multiply"
+              className="h-16 w-auto object-contain py-0.5"
             />
           </a>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-palette-dark/85">
-            <a href="#home" className="transition-colors hover:text-accent">
+          {/* Center: Central Floating Capsule Navigation Pill */}
+          <nav className="hidden md:flex items-center bg-[#0b0c0e]/70 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-white/70 shadow-lg">
+            <a 
+              href="#home" 
+              className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                activeSection === "home" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
+            >
               Home
             </a>
-            <a href="#about" className="transition-colors hover:text-accent">
+            <a 
+              href="#about" 
+              className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                activeSection === "about" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
+            >
               About
             </a>
-            <a href="#service" className="transition-colors hover:text-accent">
+            <a 
+              href="#service" 
+              className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                activeSection === "service" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
+            >
               Service
             </a>
-            <a href="#contact" className="transition-colors hover:text-accent">
+            <a 
+              href="#contact" 
+              className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                activeSection === "contact" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
+            >
               Contact Us
             </a>
           </nav>
 
-          {/* Desktop CTA Button */}
+          {/* Right: Desktop CTA Button (Outside capsule) */}
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              className="rounded-full bg-gradient-to-r from-palette-dark to-palette-slate px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider text-background shadow-[0_4px_12px_rgba(56,73,89,0.25)] transition-all hover:shadow-[0_6px_20px_rgba(56,73,89,0.35)] hover:-translate-y-0.5 flex items-center gap-2"
+              className="rounded-full bg-white px-6 py-2.5 text-[10px] font-extrabold uppercase tracking-wider text-black shadow-md hover:bg-neutral-100 transition-all hover:-translate-y-0.5 flex items-center gap-1.5"
             >
-              Get in Touch <span className="text-xs">➔</span>
+              Get in Touch <span className="text-[10px]">➔</span>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-full p-2 text-palette-dark hover:bg-slate-100 focus:outline-none md:hidden mr-1"
+            className="rounded-full p-2 text-white hover:bg-white/10 focus:outline-none md:hidden mr-1"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -150,40 +248,40 @@ export default function Home() {
 
         {/* Mobile Navigation Panel */}
         {mobileMenuOpen && (
-          <div className="absolute top-18 left-4 right-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-palette-slate/30 shadow-xl md:hidden animate-in fade-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-palette-dark/85">
+          <div className="absolute top-18 left-6 right-6 bg-[#0b0c0e]/95 backdrop-blur-lg p-6 rounded-2xl border border-white/10 shadow-2xl md:hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+            <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-white/80">
               <a
                 href="#home"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-accent border-b border-slate-100"
+                className={`py-2 border-b border-white/5 ${activeSection === "home" ? "text-palette-sky" : "hover:text-white"}`}
               >
                 Home
               </a>
               <a
                 href="#about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-accent border-b border-slate-100"
+                className={`py-2 border-b border-white/5 ${activeSection === "about" ? "text-palette-sky" : "hover:text-white"}`}
               >
                 About
               </a>
               <a
                 href="#service"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-accent border-b border-slate-100"
+                className={`py-2 border-b border-white/5 ${activeSection === "service" ? "text-palette-sky" : "hover:text-white"}`}
               >
                 Service
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-accent border-b border-slate-100"
+                className={`py-2 border-b border-white/5 ${activeSection === "contact" ? "text-palette-sky" : "hover:text-white"}`}
               >
                 Contact Us
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 w-full text-center rounded-full bg-gradient-to-r from-palette-dark to-palette-slate py-3 text-xs font-bold uppercase tracking-wider text-background shadow-md flex items-center justify-center gap-2"
+                className="mt-2 w-full text-center rounded-full bg-white py-3 text-xs font-bold uppercase tracking-wider text-black shadow-md flex items-center justify-center gap-2"
               >
                 Get in Touch <span>➔</span>
               </a>
@@ -195,51 +293,98 @@ export default function Home() {
       <main className="flex-grow">
         
         {/* Hero Section */}
-        <section id="home" className="relative overflow-hidden px-6 pt-32 pb-20 sm:px-8 lg:px-12 lg:pt-48 lg:pb-32 bg-palette-dark">
-          {/* Spotlight overlay - positioned globally in the section background to cover the whole text without clipping */}
+        <section id="home" className="relative overflow-hidden px-6 pt-36 pb-12 sm:px-8 lg:px-12 lg:pt-48 lg:pb-16 hero-radial-bg">
+          {/* Spotlight overlay */}
           <Spotlight className="-top-40 left-0 md:left-10 lg:left-20 md:-top-20" fill="white" />
 
-          {/* Subtle gradient shapes in background */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-40 right-1/4 h-[600px] w-[600px] rounded-full bg-primary-light/10 blur-3xl" />
-            <div className="absolute -bottom-20 left-10 h-[400px] w-[400px] rounded-full bg-accent-light/15 blur-3xl" />
+          {/* Vertical Grid Line Aesthetics */}
+          <div className="absolute inset-0 flex justify-between pointer-events-none opacity-10">
+            <div className="w-[1px] h-full grid-line-glow left-[15%] absolute"></div>
+            <div className="w-[1px] h-full grid-line-glow left-[50%] absolute"></div>
+            <div className="w-[1px] h-full grid-line-glow left-[85%] absolute"></div>
           </div>
 
-          <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-              
-              {/* Hero Text */}
-              <div className="relative flex flex-col text-center lg:col-span-6 lg:text-left">
-                <h1 className="font-serif-heading mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl uppercase relative z-10">
-                  Your numbers have a story,<br />
-                  we make sure investors believe it.
-                </h1>
+          {/* Subtle gradient shape glows (Emerald / Teal reference style signatures) */}
+          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 h-[600px] w-[600px] rounded-full bg-teal-500/10 blur-[130px] translate-x-1/3 -translate-y-1/3" />
+            <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-emerald-500/8 blur-[120px] -translate-x-1/4 translate-y-1/4" />
+          </div>
 
-                <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-                  <a
-                    href="#contact"
-                    className="rounded-full bg-palette-ice px-8 py-4 text-sm font-semibold text-primary shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-white hover:shadow-xl relative z-10"
-                  >
-                    Schedule Consultation
-                  </a>
-                  <a
-                    href="#about"
-                    className="rounded-full border border-white/30 bg-transparent px-8 py-4 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-white/10 hover:text-white relative z-10"
-                  >
-                    What &amp; Who We Are
-                  </a>
-                </div>
+          <div className="mx-auto max-w-7xl relative z-10 flex flex-col items-center">
+            
+            
+
+            {/* Main Centered Content */}
+            <div className="max-w-4xl text-center flex flex-col items-center">
+              <h1 className="font-sans text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl uppercase animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+                Your numbers have a story,<br />
+                we make sure investors believe it.
+              </h1>
+
+
+              {/* Pill-shaped buttons */}
+              <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row items-center animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-450">
+                <a
+                  href="#contact"
+                  className="rounded-full bg-white px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-black shadow-lg transition-all hover:bg-neutral-100 hover:scale-105 hover:shadow-xl"
+                >
+                  Schedule Consultation
+                </a>
+                <a
+                  href="#about"
+                  className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-white/10 hover:scale-105 flex items-center gap-1.5"
+                >
+                  What &amp; Who We Are <span className="text-[14px]">↗</span>
+                </a>
               </div>
+            </div>
 
-              {/* Hero Graphic - Clean Auto-cycling Image Slideshow without Text */}
-              <div className="lg:col-span-6 w-full flex items-center justify-end">
-                <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[440px] rounded-2xl border border-palette-slate bg-palette-ice shadow-2xl overflow-hidden">
-                  {/* Cycling Image Container with Fade Transition */}
+            {/* Dense wide ASCII dome (Bell Curve visual grid) */}
+            <div className="mt-14 w-full max-w-5xl select-none pointer-events-none flex flex-col items-center animate-in fade-in duration-1000 delay-600">
+              <div className="flex flex-col items-center font-mono tracking-[0.1em] text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] leading-tight select-none pointer-events-none">
+                {asciiDome.map((row, rIdx) => (
+                  <div key={rIdx} className="flex justify-center gap-[4px] whitespace-nowrap">
+                    {row.cells.map((cell, cIdx) => (
+                      <span 
+                        key={cIdx} 
+                        className="inline-block transition-opacity duration-300"
+                        style={{ 
+                          opacity: cell.opacity,
+                          color: 'rgba(255, 255, 255, 0.85)',
+                          width: '1ch',
+                          textAlign: 'center'
+                        }}
+                      >
+                        {cell.char}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* What & Who We Are Section */}
+        <section id="about" ref={aboutRef} className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 border-t border-slate-100 bg-white overflow-hidden">
+          <div className="mx-auto max-w-7xl">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              
+              {/* Left Column: Image Card with Overlay Stats */}
+              <div className={`lg:col-span-5 w-full transition-all duration-1000 ease-out transform ${
+                isAboutVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              }`}>
+                <div className="relative w-full h-[400px] sm:h-[450px] lg:h-[480px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden border border-slate-100 bg-palette-ice">
+                  
+                  {/* Fading slideshow image container */}
                   {heroImages.map((img, idx) => (
                     <div
                       key={idx}
                       className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                        activeImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+                        activeImageIndex === idx ? "opacity-100 z-0" : "opacity-0"
                       }`}
                     >
                       <Image
@@ -252,66 +397,117 @@ export default function Home() {
                       />
                     </div>
                   ))}
+
+                  {/* Dark overlay gradient behind glass card */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10 pointer-events-none" />
+
+                  {/* Frosted Glass overlay card */}
+                  <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl glassmorphic-card-light shadow-2xl z-20 max-w-[340px]">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-palette-dark/70">
+                      Our Impact
+                    </p>
+                    <h4 className="font-sans text-lg font-extrabold text-primary mt-1">
+                      Our Funds Over Time
+                    </h4>
+                    
+                    <div className="mt-4 grid grid-cols-2 gap-4 border-t border-black/5 pt-3">
+                      <div>
+                        <p className="text-xl md:text-2xl font-sans font-extrabold text-primary tracking-tight">$35M</p>
+                        <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Fund I (2024)</p>
+                      </div>
+                      <div>
+                        <p className="text-xl md:text-2xl font-sans font-extrabold text-primary tracking-tight">$55M</p>
+                        <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Fund II (2025)</p>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        {/* What & Who We Are Section */}
-        <section id="about" className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 border-t border-subtle bg-white">
-          <div className="mx-auto max-w-4xl">
-            {/* Header */}
-            <div className="text-center">
-              <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-                What &amp; Who we are...
-              </p>
-            </div>
-
-            {/* Core Issues list */}
-            <div className="mt-16 space-y-8">
-              <div className="flex items-start gap-4 rounded-xl border border-subtle bg-background p-6 shadow-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-light text-sm font-bold text-primary">1</span>
-                <div>
-                  <h4 className="font-serif-heading text-lg font-bold text-primary">Startups chase funding, numbers no one believes.</h4>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Growth models built in isolation often lack institutional feasibility. We bring institutional discipline to your spreadsheets.
-                  </p>
+              {/* Right Column: Title, Content description, list and Stat counters */}
+              <div className={`lg:col-span-7 w-full flex flex-col justify-center transition-all duration-1000 ease-out delay-200 transform ${
+                isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              }`}>
+                
+                {/* Section title pill */}
+                <div className="flex justify-start">
+                  
                 </div>
+
+                <h2 className="font-sans mt-4 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl lg:text-5xl leading-tight">
+                  A Family Office Built on Experience and Alignment
+                </h2>
+
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                  We back search funds, independent sponsors, and long term holding companies with aligned capital and real-world expertise.
+                </p>
+
+                {/* Core Items Stacked */}
+                <div className="mt-8 space-y-4">
+                  
+                  <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-slate-50/40 hover:bg-slate-50 transition-colors">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-palette-ice text-xs font-bold text-primary">1</span>
+                    <div>
+                      <h4 className="font-sans text-sm font-bold text-primary">Startups chase funding, numbers no one believes.</h4>
+                      <p className="mt-1 text-xs text-slate-500">
+                        Growth models built in isolation often lack institutional feasibility. We bring institutional discipline to your spreadsheets.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-slate-50/40 hover:bg-slate-50 transition-colors">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-palette-ice text-xs font-bold text-primary">2</span>
+                    <div>
+                      <h4 className="font-sans text-sm font-bold text-primary">Bootstrapped ventures thriving on ground, invisible on paper.</h4>
+                      <p className="mt-1 text-xs text-slate-500">
+                        Operational profitability doesn't automatically translate to venture capital readiness. We structure your financials to make ground success leap off the paper.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-slate-50/40 hover:bg-slate-50 transition-colors">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-palette-ice text-xs font-bold text-primary">3</span>
+                    <div>
+                      <h4 className="font-sans text-sm font-bold text-primary">VCs sitting across decks that collapse under one question.</h4>
+                      <p className="mt-1 text-xs text-slate-500">
+                        A single unbacked dilution assumption can break investor trust. We ensure your cap table logic is bulletproof under intense partner scrutiny.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* More on Approach Link */}
+                <div className="mt-6 flex justify-start">
+                  <a 
+                    href="#service"
+                    className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-palette-dark hover:text-accent border-b border-palette-dark hover:border-accent pb-0.5 transition-all duration-300"
+                  >
+                    More on Our Approach ➔
+                  </a>
+                </div>
+
+                {/* 3 Horizontal Stat Counters */}
+                <div className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-100 pt-8">
+                  <div>
+                    <p className="text-3xl md:text-5xl font-sans font-extrabold text-primary tracking-tight">$90M+</p>
+                    <p className="text-[10px] font-semibold text-slate-500 mt-1 uppercase tracking-wider leading-tight">Assets under advisory</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl md:text-5xl font-sans font-extrabold text-primary tracking-tight">25+</p>
+                    <p className="text-[10px] font-semibold text-slate-500 mt-1 uppercase tracking-wider leading-tight">Transactions completed</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl md:text-5xl font-sans font-extrabold text-primary tracking-tight">18+</p>
+                    <p className="text-[10px] font-semibold text-slate-500 mt-1 uppercase tracking-wider leading-tight">Years of experience</p>
+                  </div>
+                </div>
+
               </div>
 
-              <div className="flex items-start gap-4 rounded-xl border border-subtle bg-background p-6 shadow-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-light text-sm font-bold text-primary">2</span>
-                <div>
-                  <h4 className="font-serif-heading text-lg font-bold text-primary">Bootstrapped ventures thriving on ground, invisible on paper.</h4>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Operational profitability doesn't automatically translate to venture capital readiness. We structure your financials to make ground success leap off the paper.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 rounded-xl border border-subtle bg-background p-6 shadow-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-light text-sm font-bold text-primary">3</span>
-                <div>
-                  <h4 className="font-serif-heading text-lg font-bold text-primary">VCs sitting across decks that collapse under one question.</h4>
-                  <p className="mt-2 text-sm text-slate-600">
-                    A single unbacked dilution assumption can break investor trust. We ensure your cap table logic is bulletproof under intense partner scrutiny.
-                  </p>
-                </div>
-              </div>
             </div>
 
-            {/* Concluding Block */}
-            <div className="mt-16 rounded-2xl border border-palette-slate bg-palette-ice p-8 text-center shadow-md">
-              <h3 className="font-serif-heading text-2xl font-bold text-primary leading-snug">
-                Valuation is the bridge between Story &amp; Numbers.<br />
-                Most get it wrong.
-              </h3>
-              <p className="mt-4 font-serif-heading text-lg font-semibold text-accent">
-                That's exactly what we build for.
-              </p>
-            </div>
           </div>
         </section>
 
@@ -523,11 +719,11 @@ export default function Home() {
             {/* Logo & Compliance (Left) */}
             <div className="md:col-span-6">
               <Image
-                src="/logo-full.png"
+                src="/logo-v2.png"
                 alt="Founder's Equity Logo"
-                width={140}
-                height={64}
-                className="h-8 w-auto object-contain brightness-0 invert opacity-90"
+                width={175}
+                height={80}
+                className="h-10 w-auto object-contain opacity-90"
               />
               <p className="mt-6 text-xs leading-relaxed text-slate-400 max-w-md">
                 Disclaimer: Founder's Equity is a financial advisory and consulting firm. We do not provide legal, accounting, tax, or SEC broker-dealer services. All advisory models and illustrative summaries are for planning purposes.
@@ -579,6 +775,34 @@ export default function Home() {
 
         </div>
       </footer>
+
+      {/* Floating Chat Bubble */}
+      <a
+        href="#contact"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-white border border-slate-100 shadow-[0_12px_40px_rgba(0,0,0,0.16)] transition-all duration-300 hover:scale-110 hover:-translate-y-1 group animate-bounce"
+        style={{ animationDuration: '3s' }}
+        aria-label="Contact advisory team"
+      >
+        {/* Active pulse dot */}
+        <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border border-white"></span>
+        </span>
+        {/* SVG Message Icon */}
+        <svg
+          className="h-6 w-6 text-slate-700 transition-colors group-hover:text-primary"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+          />
+        </svg>
+      </a>
 
     </div>
   );

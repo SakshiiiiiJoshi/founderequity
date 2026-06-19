@@ -17,9 +17,9 @@ export const metadata = {
   title: "Founder's Equity | Capital Advisory & Equity Solutions",
   description: "Strategic equity advisory and capital management solutions built for visionary founders. Align interests, model growth, and secure your financial legacy.",
   icons: {
-    icon: "/logo-icon.png",
-    shortcut: "/logo-icon.png",
-    apple: "/logo-icon.png",
+    icon: "/logo-icon-v2.png",
+    shortcut: "/logo-icon-v2.png",
+    apple: "/logo-icon-v2.png",
   },
 };
 
