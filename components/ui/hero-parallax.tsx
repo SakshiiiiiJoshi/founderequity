@@ -85,25 +85,25 @@ export const HeroParallax = ({
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.35], [15, 0]),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    useTransform(scrollYProgress, [0, 0.35], [0.1, 1]),
     springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    useTransform(scrollYProgress, [0, 0.35], [20, 0]),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-500, 200]),
+    useTransform(scrollYProgress, [0, 0.35], [-250, 150]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className="h-[200vh] py-28 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] hero-radial-bg"
+      className="h-[190vh] py-28 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] hero-radial-bg"
     >
       {/* Vertical Grid Line Aesthetics */}
       <div className="absolute inset-0 flex justify-between pointer-events-none opacity-10">
@@ -122,15 +122,6 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
-          ))}
-        </motion.div>
         <motion.div className="flex flex-row  mb-20 space-x-20 ">
           {secondRow.map((product) => (
             <ProductCard
@@ -158,30 +149,27 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto pt-20 pb-14 md:pt-28 md:pb-16 px-4 w-full left-0 top-0 flex flex-col items-center text-center z-10">
       {/* Spotlight overlay */}
-      <Spotlight className="-top-40 left-0 md:left-10 lg:left-20 md:-top-20" fill="white" />
+      <Spotlight className="-top-40 left-0 md:left-10 lg:left-20 md:-top-20" fill="#00E5FF" />
       
       {/* Subtle gradient shape glows */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 h-[600px] w-[600px] rounded-full bg-teal-500/10 blur-[130px] translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-emerald-500/8 blur-[120px] -translate-x-1/4 translate-y-1/4" />
-      </div>
+      
 
-      <h1 className="font-serif-heading text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl uppercase animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+      <h1 className="font-serif-heading text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl camelcase animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
         Your numbers have a story,<br />
-        we make sure investors believe it.
+        We make sure investors BELIEVE it.
       </h1>
 
       {/* Pill-shaped buttons */}
       <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row items-center animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-450 z-20">
         <a
           href="#contact"
-          className="rounded-full bg-white px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-black shadow-lg transition-all hover:bg-neutral-100 hover:scale-105 hover:shadow-xl"
+          className="rounded-full bg-white px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-black shadow-lg transition-all hover:bg-neutral-100 hover:scale-105 hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] cursor-pointer"
         >
           Schedule Consultation
         </a>
         <a
           href="#about"
-          className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-white/10 hover:scale-105 flex items-center gap-1.5"
+          className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-white/10 hover:border-[#00E5FF]/40 hover:scale-105 hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] flex items-center gap-1.5 cursor-pointer"
         >
           Who Are WE <span className="text-[14px]">↗</span>
         </a>
