@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Founder's Equity | Capital Advisory & Equity Solutions",
   description: "Strategic equity advisory and capital management solutions built for visionary founders. Align interests, model growth, and secure your financial legacy.",
   icons: {
@@ -24,7 +25,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
@@ -36,4 +41,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 

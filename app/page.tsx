@@ -5,10 +5,15 @@ import Image from "next/image";
 import HeroParallaxDemo from "@/components/hero-parallax-demo";
 import { Rocket, Lightbulb, Building2, TrendingUp, Users, Target, ChevronDown } from "lucide-react";
 
-function Spotlight({ className, fill }) {
+interface SpotlightProps {
+  className?: string;
+  fill?: string;
+}
+
+function Spotlight({ className, fill }: SpotlightProps) {
   return (
     <svg
-      className={`animate-spotlight pointer-events-none absolute z-[1] h-[220%] w-[180%] lg:w-[120%] opacity-0 ${className}`}
+      className={`animate-spotlight pointer-events-none absolute z-[1] h-[220%] w-[180%] lg:w-[120%] opacity-0 ${className || ""}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 3787 2842"
       fill="none"
@@ -51,6 +56,20 @@ function Spotlight({ className, fill }) {
   );
 }
 
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Cell {
+  char: string;
+  opacity: number;
+}
+
+interface Row {
+  cells: Cell[];
+}
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -63,10 +82,10 @@ export default function Home() {
   // Dynamic scroll state to track which section is currently in viewport
   const [activeSection, setActiveSection] = useState("home");
   const isLightSection = activeSection === "about" || activeSection === "contact" || activeSection === "footer";
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
       q: "What methodologies do you use for startup valuation?",
       a: "We use a blend of industry-standard methodologies tailored to your startup's stage: the Scorecard Method, Berkus Method, Venture Capital (VC) method, and Discounted Cash Flow (DCF) models with multiple scenarios."
@@ -123,7 +142,7 @@ export default function Home() {
   }, []);
 
   // Intersection Observer state for scroll-reveal transition
-  const aboutRef = useRef(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
   const [isAboutVisible, setIsAboutVisible] = useState(false);
 
   useEffect(() => {
@@ -142,7 +161,7 @@ export default function Home() {
   }, []);
 
   // Dense ASCII dome data visualization matching the reference image exactly
-  const asciiDome = useMemo(() => {
+  const asciiDome = useMemo<Row[]>(() => {
     const cols = 90; // Large horizontal resolution
     const rows = 23; // Large vertical density
     // Monospace band pattern for realistic ASCII visual scanning lines
@@ -151,9 +170,9 @@ export default function Home() {
       "I", "|", "l", "-", "I", "|", "ll", "-", "I", "|", "ll"
     ];
 
-    const result = [];
+    const result: Row[] = [];
     for (let r = 0; r < rows; r++) {
-      const cells = [];
+      const cells: Cell[] = [];
       const char = rowChars[r % rowChars.length];
       for (let c = 0; c < cols; c++) {
         const dx = (c - (cols / 2)) / (cols / 2); // -1 to 1
@@ -173,9 +192,7 @@ export default function Home() {
     return result;
   }, []);
 
-
-
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.name && formData.email) {
       setFormSubmitted(true);
@@ -185,6 +202,7 @@ export default function Home() {
       }, 5000);
     }
   };
+
 
   return (
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-accent-light selection:text-primary">
