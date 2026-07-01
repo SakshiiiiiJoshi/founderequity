@@ -120,6 +120,12 @@
   }
 }
 
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
 body {
   background-color: var(--background);
   font-family: var(--font-sans);

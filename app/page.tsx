@@ -87,28 +87,40 @@ export default function Home() {
 
   const faqs: FAQItem[] = [
     {
-      q: "What methodologies do you use for startup valuation?",
-      a: "We use a blend of industry-standard methodologies tailored to your startup's stage: the Scorecard Method, Berkus Method, Venture Capital (VC) method, and Discounted Cash Flow (DCF) models with multiple scenarios."
+      q: "What types of businesses do you value?",
+      a: "We provide valuation services for startups, MSMEs, privately held companies, family-owned businesses, listed companies, and growth-stage enterprises across diverse industries."
     },
     {
-      q: "How long does a valuation advisory project take?",
-      a: "Early-stage valuations (Pre-Seed/Seed) are typically completed within 3 to 5 business days. More complex growth-stage models (Series A/B/C) and ESOP compliance valuations take 7 to 10 business days."
+      q: "Do you value businesses that are not yet profitable?",
+      a: "Yes. We value pre-revenue, early-stage, and loss-making businesses by assessing their growth potential, market opportunity, business model, competitive positioning, and future cash flow prospects."
     },
     {
-      q: "What is the 'Second Opinion Valuation' process?",
-      a: "If you already have a valuation report, our experts will review it for free. We inspect the underlying cap table projections, growth assumptions, and dilution risks to identify gaps or over-inflated figures."
+      q: "Can you help us avoid unnecessary dilution or accepting a lower valuation?",
+      a: "Yes. We provide independent, well-supported valuations that strengthen your position during fundraising, equity negotiations, mergers, acquisitions, and strategic transactions."
     },
     {
-      q: "Can you help design our ESOP pool and structuring?",
-      a: "Yes, we assist founders in designing equity incentive pools (ESOPs) that align early employee contributions with future capital rounds, minimizing dilution while maximizing retention."
+      q: "How long does the valuation process take?",
+      a: "Most valuation engagements are completed within 24 to 48 hours, depending on the scope of work, business complexity, and availability of the required information."
     },
     {
-      q: "Do you act as an SEC-registered broker-dealer?",
-      a: "No. Founder's Equity is a pure strategic financial advisory and consulting firm. We do not raise capital directly, distribute securities, or provide SEC broker-dealer transaction services."
+      q: "Can you justify your valuation if investors challenge it?",
+      a: "Yes. Every valuation is supported by transparent assumptions, robust financial analysis, industry benchmarks, and internationally recognized valuation methodologies, making it easier to defend during discussions with investors and stakeholders."
     },
     {
-      q: "What information do I need to prepare for a valuation?",
-      a: "We typically require your current cap table, historical financial statements (if any), a 3-to-5-year revenue forecast, and details about your recent product/traction milestones."
+      q: "How do you protect our confidential business information?",
+      a: "Client confidentiality is fundamental to our practice. All information shared with us is handled securely, and we are happy to execute a Non-Disclosure Agreement (NDA) whenever required."
+    },
+    {
+      q: "What makes Founder's Equity different?",
+      a: "Every valuation is tailored to your business, industry, growth stage, and valuation objective. We don't rely on generic templates—we deliver independent, research-driven, and decision-focused valuations designed to support fundraising, strategic planning, and long-term value creation."
+    },
+    {
+      q: "How are your valuation fees determined?",
+      a: "Our fees are based on the scope of engagement, business complexity, valuation purpose, reporting requirements, and turnaround timeline. We provide a transparent quotation before commencing any engagement."
+    },
+    {
+      q: "How do we get started?",
+      a: "Simply schedule an introductory consultation. We'll understand your requirements, define the scope of work, share a tailored proposal, and guide you through the entire valuation process."
     }
   ];
 
@@ -208,7 +220,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background font-sans text-foreground selection:bg-accent-light selection:text-primary">
 
       {/* Navbar Section */}
-      <header className="fixed top-6 z-50 w-full px-6 sm:px-8 lg:px-12 transition-all duration-500 translate-y-0 opacity-100">
+      <header className="fixed top-4 z-50 w-full px-6 sm:px-8 lg:px-12 transition-all duration-500 translate-y-0 opacity-100">
         <div className="mx-auto max-w-7xl flex items-center justify-between w-full">
 
           {/* Left: Logo (Outside capsule, visible on dark/light backgrounds) */}
@@ -216,16 +228,16 @@ export default function Home() {
             <Image
               src="/logo-v2.png"
               alt="Founder's Equity Logo"
-              width={200}
-              height={100}
+              width={180}
+              height={90}
               priority
-              className={`h-16 w-auto object-contain py-0.5 transition-all duration-300 ${isLightSection ? "invert" : ""
+              className={`h-12 md:h-[3.5rem] w-auto object-contain transition-all duration-300 ${isLightSection ? "invert" : ""
                 }`}
             />
           </a>
 
           {/* Center: Central Floating Capsule Navigation Pill */}
-          <nav className="hidden md:flex items-center bg-[#0D1B2A]/70 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-white/70 shadow-lg">
+          <nav className="hidden md:flex items-center bg-[#0D1B2A]/70 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10 text-[11px] font-bold uppercase tracking-wider text-white/70 shadow-lg gap-1">
             <a
               href="#home"
               className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "home" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
@@ -267,12 +279,12 @@ export default function Home() {
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              className={`rounded-full px-6 py-2.5 text-[10px] font-extrabold uppercase tracking-wider shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 ${isLightSection
+              className={`rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 ${isLightSection
                   ? "bg-[#050B14] text-white hover:bg-[#0B1528] shadow-[0_0_15px_rgba(0,0,0,0.1)]"
                   : "bg-white text-black hover:bg-neutral-100"
                 }`}
             >
-              Get in Touch <span className="text-[10px]">➔</span>
+              Get in Touch <span className="text-xs">➔</span>
             </a>
           </div>
 
@@ -337,7 +349,7 @@ export default function Home() {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 w-full text-center rounded-full bg-white py-3 text-xs font-bold uppercase tracking-wider text-black shadow-md flex items-center justify-center gap-2"
+                className="mt-2 w-full text-center rounded-full bg-white py-3.5 text-sm font-bold uppercase tracking-wider text-black shadow-md flex items-center justify-center gap-2"
               >
                 Get in Touch <span>➔</span>
               </a>
@@ -354,188 +366,188 @@ export default function Home() {
         </section>
 
         {/* What & Who We Are Section */}
-        <section id="about" ref={aboutRef} className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 border-t border-slate-200 bg-gradient-to-b from-[#F3F4F6] via-[#EBF3FC] to-[#F3F4F6] overflow-hidden">
+        <section id="about" ref={aboutRef} className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 border-t border-slate-200 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0] overflow-hidden">
           <div className="mx-auto max-w-7xl">
 
             {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 border border-blue-200 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-blue-600 shadow-sm">
-                Who We Are
-              </div>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-blue-600">About Us</p>
               <h2 className="font-serif-heading mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-                About Us
+                Built for Ambition.<br />Trusted by Investors.
               </h2>
               <p className="mt-4 text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
                 We partner with ambitious founders to establish equity preservation strategies, simulate future capital rounds, and build institutional financial models.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Redesigned 3-Card Grid */}
+            <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-1000 ease-out transform ${
+              isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}>
+              
+              {/* Card 1: Light Theme Card */}
+              <div className="group relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col justify-between min-h-[500px] p-8">
+                {/* Background Pattern: Subtle Vertical Stripes */}
+                <div className="absolute inset-0 opacity-[0.04] pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-500" style={{
+                  backgroundImage: 'repeating-linear-gradient(90deg, #000 0px, #000 1px, transparent 1px, transparent 20px)'
+                }}></div>
+                {/* Subtle Radial Glow */}
+                <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-blue-200/20 blur-2xl group-hover:bg-blue-200/30 transition-all duration-500"></div>
 
-              {/* Left Column: Visual Growth Dashboard */}
-              <div className={`lg:col-span-5 w-full flex justify-center lg:justify-start transition-all duration-1000 ease-out transform ${isAboutVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-                }`}>
-                <div className="w-full max-w-[460px] p-8 rounded-3xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.08)] hover:border-blue-400/40 transition-all duration-500 group flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <p className="text-xs font-extrabold uppercase tracking-widest text-blue-600">
-                          Performance Tracker
-                        </p>
-                        <h4 className="font-serif-heading text-2xl font-extrabold text-slate-900 mt-2">
-                          Advisory Capital
-                        </h4>
-                      </div>
-                      <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">
-                        +57.1% Growth
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-3 leading-relaxed">
-                      Founder's Equity acts as the bridging mechanism between scale operations and institutional backing.
-                    </p>
-
-                    {/* Animated SVG Chart Graphic */}
-                    <div className="my-8 relative h-48 bg-slate-50/50 rounded-2xl border border-slate-100 p-4 overflow-hidden flex flex-col justify-end">
-                      {/* Background Grid Lines */}
-                      <div className="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none opacity-40">
-                        <div className="w-full border-t border-dashed border-slate-200"></div>
-                        <div className="w-full border-t border-dashed border-slate-200"></div>
-                        <div className="w-full border-t border-dashed border-slate-200"></div>
-                        <div className="w-full border-t border-dashed border-slate-200"></div>
-                      </div>
-
-                      {/* Main Bars */}
-                      <div className="flex justify-around items-end h-full z-10 pt-4 relative">
-                        {/* Bar 1 */}
-                        <div className="flex flex-col items-center gap-2 group/bar w-16">
-                          <div className="relative w-full rounded-t-xl bg-gradient-to-t from-blue-500 to-[#38BDF8] h-24 group-hover/bar:h-[105px] transition-all duration-500 shadow-[0_4px_12px_rgba(56,189,248,0.2)]">
-                            <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs font-bold text-slate-800 opacity-0 group-hover/bar:opacity-100 transition-opacity duration-300">$35M</span>
-                          </div>
-                          <span className="text-[10px] font-bold text-slate-400">Fund I (2024)</span>
-                        </div>
-
-                        {/* Bar 2 */}
-                        <div className="flex flex-col items-center gap-2 group/bar w-16">
-                          <div className="relative w-full rounded-t-xl bg-gradient-to-t from-blue-600 to-[#0072FF] h-36 group-hover/bar:h-[155px] transition-all duration-500 shadow-[0_4px_16px_rgba(0,114,255,0.3)]">
-                            <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs font-bold text-slate-800 opacity-0 group-hover/bar:opacity-100 transition-opacity duration-300">$55M</span>
-                          </div>
-                          <span className="text-[10px] font-bold text-slate-400">Fund II (2025)</span>
-                        </div>
-                      </div>
-                    </div>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">
+                    Precision & Compliance
                   </div>
+                  <h3 className="font-serif-heading text-2xl font-extrabold text-slate-900 mt-6 leading-tight">
+                    Strategic Equity<br />Preservation
+                  </h3>
+                  <p className="text-slate-600 text-sm mt-4 leading-relaxed max-w-xs">
+                    Designed for ambitious founders to build investor-grade financial models, structure valuation models, and project dilution with absolute precision.
+                  </p>
+                  
+                  <a 
+                    href="#contact"
+                    className="inline-flex items-center justify-center mt-6 px-6 py-2.5 rounded-full bg-slate-950 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:-translate-y-0.5"
+                  >
+                    Request Valuation
+                  </a>
+                </div>
 
-                  {/* Footer Info inside the card */}
-                  <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-5">
-                    <div className="border-r border-slate-100">
-                      <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Fund I Value</span>
-                      <p className="text-xl font-bold text-slate-800 mt-0.5">$35,000,000</p>
-                    </div>
-                    <div className="pl-2">
-                      <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Fund II Value</span>
-                      <p className="text-xl font-bold text-slate-800 mt-0.5">$55,000,000</p>
+                {/* Bottom Branding & Logos */}
+                <div className="relative z-10 border-t border-slate-100 pt-6 flex items-end justify-between mt-12">
+                  <div className="flex flex-col">
+                    <span className="text-[9px] uppercase tracking-widest text-slate-400 font-extrabold">Advisory Framework</span>
+                    <span className="text-xs font-extrabold text-slate-800 tracking-tight mt-0.5">FOUNDER'S EQUITY</span>
+                  </div>
+                  {/* Elegant abstract line logo or stamp */}
+                  <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 rounded-lg px-2.5 py-1.5 shadow-sm">
+                    <span className="h-4 w-4 rounded-full border border-blue-500 border-dashed flex items-center justify-center text-[8px] text-blue-600 font-extrabold">★</span>
+                    <div className="flex flex-col">
+                      <span className="text-[7px] leading-none font-bold text-slate-500 uppercase tracking-widest">AICPA / IVS</span>
+                      <span className="text-[8px] font-extrabold text-slate-800 uppercase tracking-wider leading-none mt-0.5">COMPLIANT</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Value Propositions */}
-              <div className={`lg:col-span-7 w-full flex flex-col justify-center transition-all duration-1000 ease-out transform ${isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                }`}>
+              {/* Card 2: Dark Blue/Sky Glassmorphic Card */}
+              <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B2545] via-[#081F37] to-[#051020] border border-[#0284C7]/40 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 flex flex-col justify-between min-h-[500px] p-8">
+                {/* Background glow animation effect */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.15),transparent_60%)] pointer-events-none"></div>
+                <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-sky-500/10 blur-3xl group-hover:bg-sky-500/15 transition-all duration-500"></div>
 
-                {/* Core Items Stacked */}
-                <div className="space-y-4 w-full">
-
-                  {/* Prop 1 */}
-                  <div className="group relative flex items-start gap-5 p-6 rounded-2xl border border-slate-200/60 bg-white hover:bg-slate-50/50 hover:border-blue-400/40 shadow-[0_4px_25px_rgba(0,0,0,0.01)] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    {/* Accent sidebar strip */}
-                    <div className="absolute left-0 top-5 bottom-5 w-[4px] rounded-r-lg bg-slate-200 group-hover:bg-blue-600 transition-all duration-300"></div>
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-inner">
-                      <Rocket className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <h4 className="font-sans text-base font-bold text-slate-900 tracking-wide">
-                        <span className="text-blue-600 transition-colors duration-300 group-hover:text-blue-600">Ambitious startups.</span> Investor-ready numbers.
-                      </h4>
-                      <p className="mt-2 text-sm text-slate-600 leading-relaxed group-hover:text-slate-800 transition-colors duration-300">
-                        We help founders build financial models and forecasts that transform vision into a language investors understand and trust.
-                      </p>
-                    </div>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-sky-950/60 border border-sky-800/40 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-400">
+                    24/7 Dedicated Support
                   </div>
-
-                  {/* Prop 2 */}
-                  <div className="group relative flex items-start gap-5 p-6 rounded-2xl border border-slate-200/60 bg-white hover:bg-slate-50/50 hover:border-blue-400/40 shadow-[0_4px_25px_rgba(0,0,0,0.01)] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    {/* Accent sidebar strip */}
-                    <div className="absolute left-0 top-5 bottom-5 w-[4px] rounded-r-lg bg-slate-200 group-hover:bg-blue-600 transition-all duration-300"></div>
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-inner">
-                      <Building2 className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <h4 className="font-sans text-base font-bold text-slate-900 tracking-wide">
-                        <span className="text-blue-600 transition-colors duration-300 group-hover:text-blue-600">Strong businesses.</span> Hidden value.
-                      </h4>
-                      <p className="mt-2 text-sm text-slate-600 leading-relaxed group-hover:text-slate-800 transition-colors duration-300">
-                        Operational success often remains invisible without the right financial structure. We ensure your performance is reflected on paper as clearly as it is in reality.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Prop 3 */}
-                  <div className="group relative flex items-start gap-5 p-6 rounded-2xl border border-slate-200/60 bg-white hover:bg-slate-50/50 hover:border-blue-400/40 shadow-[0_4px_25px_rgba(0,0,0,0.01)] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    {/* Accent sidebar strip */}
-                    <div className="absolute left-0 top-5 bottom-5 w-[4px] rounded-r-lg bg-slate-200 group-hover:bg-blue-600 transition-all duration-300"></div>
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-inner">
-                      <Target className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <h4 className="font-sans text-base font-bold text-slate-900 tracking-wide">
-                        <span className="text-blue-600 transition-colors duration-300 group-hover:text-blue-600">Stories inspire.</span> Numbers convince.
-                      </h4>
-                      <p className="mt-2 text-sm text-slate-600 leading-relaxed group-hover:text-slate-800 transition-colors duration-300">
-                        Valuation is the bridge between ambition and credibility. We help businesses align their narrative with the financial evidence behind it.
-                      </p>
-                    </div>
-                  </div>
-
+                  <h3 className="font-serif-heading text-2xl font-extrabold text-white mt-6 leading-tight">
+                    Dedicated Advisory &<br />Capital Consulting
+                  </h3>
+                  <p className="text-sky-100/80 text-sm mt-4 leading-relaxed max-w-xs">
+                    Partner with seasoned financial advisors to shape your capital narrative. No automated bots. No template reports. Real experts in your corner.
+                  </p>
+                  
+                  <a 
+                    href="#contact"
+                    className="inline-flex items-center justify-center mt-6 px-6 py-2.5 rounded-full bg-white/10 text-white border border-white/20 text-xs font-bold uppercase tracking-wider hover:bg-white/20 transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5 shadow-md"
+                  >
+                    Schedule Call
+                  </a>
                 </div>
 
+                {/* Wireframe Grid/Globe Graphic at Bottom */}
+                <div className="relative h-28 w-full mt-8 overflow-hidden rounded-xl border border-sky-900/30 bg-sky-950/20 flex items-center justify-center pointer-events-none">
+                  {/* Curved Grid lines */}
+                  <svg className="absolute inset-0 w-full h-full text-sky-500/10 group-hover:text-sky-500/20 transition-colors duration-500" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    {/* Vertical lines */}
+                    <path d="M10,0 Q30,50 10,100 M20,0 Q40,50 20,100 M30,0 Q50,50 30,100 M40,0 Q60,50 40,100 M50,0 Q70,50 50,100 M60,0 Q80,50 60,100 M70,0 Q90,50 70,100 M80,0 Q95,50 80,100 M90,0 Q99,50 90,100" fill="none" stroke="currentColor" strokeWidth="0.3" />
+                    {/* Horizontal lines */}
+                    <path d="M0,10 Q50,30 100,10 M0,20 Q50,40 100,20 M0,30 Q50,50 100,30 M0,40 Q50,60 100,40 M0,50 Q50,70 100,50 M0,60 Q50,80 100,60 M0,70 Q50,90 100,70 M0,80 Q50,95 100,80 M0,90 Q50,99 100,90" fill="none" stroke="currentColor" strokeWidth="0.3" />
+                  </svg>
+                  {/* Glowing core */}
+                  <div className="absolute w-20 h-20 rounded-full bg-sky-500/5 group-hover:bg-sky-500/10 blur-xl transition-all duration-500"></div>
+                  <span className="relative z-10 text-[10px] text-sky-400 font-bold uppercase tracking-widest opacity-60">Global Network</span>
+                </div>
               </div>
 
-            </div>
+              {/* Card 3: Dark Slate/Black Card */}
+              <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B1528] via-[#050B14] to-[#02050A] border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all duration-500 flex flex-col justify-between min-h-[500px] p-8">
+                {/* Background glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.1),transparent_50%)] pointer-events-none"></div>
 
-            {/* Full-width Stats Panel */}
-            <div className={`mt-16 w-full p-8 md:p-10 rounded-3xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.02)] grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-slate-100 transition-all duration-1000 ease-out transform ${isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}>
-              <div className="flex flex-col justify-center">
-                <p className="text-4xl md:text-5xl font-sans font-extrabold text-blue-600 tracking-tight">
-                  $90M+
-                </p>
-                <p className="text-xs font-bold text-slate-500 mt-2 uppercase tracking-widest leading-relaxed">
-                  Assets under advisory
-                </p>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 border border-slate-800 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#38BDF8]">
+                    Assets Under Advisory
+                  </div>
+                  
+                  {/* Giant Stat Display */}
+                  <div className="mt-8">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-extrabold">Cumulative Value</span>
+                    <div className="text-5xl font-extrabold text-white tracking-tight mt-1 group-hover:text-[#38BDF8] transition-colors duration-500 font-sans">
+                      $90M+
+                    </div>
+                  </div>
+
+                  <p className="text-slate-300 text-sm mt-6 leading-relaxed max-w-xs">
+                    Ambitious founders, venture funds, and growth-stage companies rely on our independent valuations to confidently negotiate terms.
+                  </p>
+                </div>
+
+                {/* SVG Particle Chart Wave & Action Button */}
+                <div className="relative mt-8">
+                  {/* SVG Wavy dotted graph lines */}
+                  <div className="h-24 w-full relative overflow-hidden rounded-xl bg-black/30 border border-white/[0.03] p-2 flex flex-col justify-end">
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100" preserveAspectRatio="none">
+                      {/* Grid lines */}
+                      <line x1="0" y1="25" x2="200" y2="25" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="3,3" />
+                      <line x1="0" y1="50" x2="200" y2="50" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="3,3" />
+                      <line x1="0" y1="75" x2="200" y2="75" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="3,3" />
+                      
+                      {/* Main Chart Paths */}
+                      <path 
+                        d="M0,80 Q25,85 50,60 T100,50 T150,30 T200,10" 
+                        fill="none" 
+                        stroke="rgba(56, 189, 248, 0.4)" 
+                        strokeWidth="1.5" 
+                        className="group-hover:stroke-[#38BDF8] transition-colors duration-500" 
+                      />
+                      <path 
+                        d="M0,80 Q25,85 50,60 T100,50 T150,30 T200,10" 
+                        fill="none" 
+                        stroke="rgba(56, 189, 248, 0.7)" 
+                        strokeWidth="3" 
+                        strokeDasharray="1,5" 
+                        strokeLinecap="round"
+                        className="animate-[dash_20s_linear_infinite]"
+                      />
+                      <path 
+                        d="M0,90 Q30,70 60,75 T120,40 T180,25 T200,20" 
+                        fill="none" 
+                        stroke="rgba(255,255,255,0.15)" 
+                        strokeWidth="1" 
+                      />
+                    </svg>
+                    <div className="absolute inset-x-2 bottom-1.5 flex justify-between text-[8px] font-bold text-slate-500 tracking-wider">
+                      <span>VALUATION TREND</span>
+                      <span>+57% YOY</span>
+                    </div>
+                  </div>
+
+                  {/* Button & Subtitle */}
+                  <div className="flex items-center justify-between mt-6 pt-2">
+                    <span className="text-[10px] text-slate-400 font-bold tracking-tight">
+                      Independent. Research-driven.
+                    </span>
+                    <a 
+                      href="#service"
+                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-white/5 hover:bg-[#38BDF8] hover:text-slate-950 text-white border border-white/10 hover:border-transparent text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      Learn More
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-col justify-center md:pl-10 pt-6 md:pt-0">
-                <p className="text-4xl md:text-5xl font-sans font-extrabold text-blue-600 tracking-tight">
-                  25+
-                </p>
-                <p className="text-xs font-bold text-slate-500 mt-2 uppercase tracking-widest leading-relaxed">
-                  Transactions completed
-                </p>
-              </div>
-              <div className="flex flex-col justify-center md:pl-10 pt-6 md:pt-0">
-                <p className="text-4xl md:text-5xl font-sans font-extrabold text-blue-600 tracking-tight">
-                  18+
-                </p>
-                <p className="text-xs font-bold text-slate-500 mt-2 uppercase tracking-widest leading-relaxed">
-                  Years of experience
-                </p>
-              </div>
+
             </div>
 
           </div>
@@ -693,32 +705,47 @@ export default function Home() {
                   </p>
 
                   <div className="mt-10 space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600">
+                    <a href="mailto:amoghshirke.valuation@gmail.com" className="flex items-center gap-4 group cursor-pointer">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                       </div>
                       <div>
-                        <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Email</p>
-                        <a href="mailto:advisory@foundersequity.com" className="text-sm font-semibold text-slate-800 hover:underline">
-                          advisory@foundersequity.com
-                        </a>
+                        <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">Email</p>
+                        <span className="text-sm font-semibold text-slate-800 hover:underline">
+                          amoghshirke.valuation@gmail.com
+                        </span>
                       </div>
-                    </div>
+                    </a>
 
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600">
-                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <a href="https://www.linkedin.com/in/amogh-shirke" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group cursor-pointer">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
                       </div>
                       <div>
-                        <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Location</p>
-                        <p className="text-sm font-semibold text-slate-800">San Francisco, CA &amp; New York, NY</p>
+                        <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">LinkedIn</p>
+                        <span className="text-sm font-semibold text-slate-800 hover:underline">
+                          amogh-shirke
+                        </span>
                       </div>
-                    </div>
+                    </a>
+
+                    <a href="https://thebombayvaluationdesk.substack.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group cursor-pointer">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M22.539 8.242H1.46V5.406h21.078v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.078V0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">Substack</p>
+                        <span className="text-sm font-semibold text-slate-800 hover:underline">
+                          The Bombay Valuation Desk
+                        </span>
+                      </div>
+                    </a>
                   </div>
                 </div>
 
@@ -790,7 +817,7 @@ export default function Home() {
 
                       <button
                         type="submit"
-                        className="w-full rounded-full bg-blue-600 py-4 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg focus:outline-none cursor-pointer"
+                        className="w-full rounded-full bg-blue-600 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg focus:outline-none cursor-pointer"
                       >
                         Send Message
                       </button>
@@ -851,6 +878,25 @@ export default function Home() {
                 );
               })}
             </div>
+
+            {/* Still Have Questions CTA */}
+            <div className="mt-16 text-center bg-[#09111E]/40 border border-white/5 rounded-2xl p-8 max-w-2xl mx-auto backdrop-blur-sm shadow-lg hover:border-[#38BDF8]/20 transition-all duration-300">
+              <h4 className="font-serif-heading text-lg font-bold text-white uppercase tracking-wider">
+                Still have questions?
+              </h4>
+              <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                Schedule a confidential consultation, and we'll be happy to discuss your valuation requirements and recommend the most suitable approach for your business.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="#contact"
+                  className="inline-flex rounded-full bg-white px-8 py-3 text-xs font-bold uppercase tracking-wider text-black shadow-md transition-all hover:bg-neutral-100 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] cursor-pointer"
+                >
+                  Schedule Consultation
+                </a>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -863,21 +909,21 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12">
 
             {/* Logo & Compliance (Left) */}
-            <div className="md:col-span-6">
+            <div className="md:col-span-4">
               <Image
                 src="/logo-v2.png"
                 alt="Founder's Equity Logo"
                 width={175}
                 height={80}
-                className="h-10 w-auto object-contain opacity-95 invert"
+                className="h-14 w-auto object-contain opacity-95 invert"
               />
               <p className="mt-6 text-xs leading-relaxed text-slate-500 max-w-md">
                 Disclaimer: Founder's Equity is a financial advisory and consulting firm. We do not provide legal, accounting, tax, or SEC broker-dealer services. All advisory models and illustrative summaries are for planning purposes.
               </p>
             </div>
 
-            {/* Quick Links (Middle) */}
-            <div className="md:col-span-3">
+            {/* Quick Links (Middle-Left) */}
+            <div className="md:col-span-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-blue-600">Website</h4>
               <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-500">
                 <li>
@@ -898,17 +944,35 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Office Info (Right) */}
+            {/* Social Links (Middle-Right Column) */}
+            <div className="md:col-span-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-blue-600">Publications &amp; Social</h4>
+              <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-500">
+                <li>
+                  <a href="https://www.linkedin.com/in/amogh-shirke" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center gap-1.5">
+                    <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="https://thebombayvaluationdesk.substack.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF5722] transition-colors flex items-center gap-1.5">
+                    <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M22.539 8.242H1.46V5.406h21.078v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.078V0z" />
+                    </svg>
+                    Substack
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Office Contact (Right) */}
             <div className="md:col-span-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-blue-600">Office Contact</h4>
-              <p className="mt-4 text-xs text-slate-500 leading-relaxed">
-                Founder's Equity Partners Inc.<br />
-                One Maritime Plaza, Suite 1400<br />
-                San Francisco, CA 94111<br />
-                <a href="mailto:advisory@foundersequity.com" className="hover:text-blue-600 transition-colors font-semibold text-slate-700">
-                  advisory@foundersequity.com
-                </a>
-              </p>
+              <a href="mailto:amoghshirke.valuation@gmail.com" className="hover:text-blue-600 transition-colors font-semibold text-slate-700 block mt-4">
+                amoghshirke.valuation@gmail.com
+              </a>
             </div>
 
           </div>
