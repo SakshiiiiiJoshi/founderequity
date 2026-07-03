@@ -227,10 +227,10 @@ body {
 
 /* Custom Styles for reference images */
 .hero-radial-bg {
-  background-color: #030712;
+  background-color: #060d1a;
   background-image: 
-    radial-gradient(circle at 75% 15%, rgba(0, 229, 255, 0.28) 0%, transparent 65%),
-    radial-gradient(circle at 25% 85%, rgba(99, 102, 241, 0.22) 0%, transparent 65%);
+    radial-gradient(circle at 75% 20%, rgba(37, 99, 235, 0.16) 0%, transparent 60%),
+    radial-gradient(circle at 25% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
 }
 
 .glassmorphic-card {

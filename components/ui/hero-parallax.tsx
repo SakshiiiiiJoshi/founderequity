@@ -157,16 +157,19 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 flex flex-col justify-center min-h-[90vh] md:min-h-screen z-10 text-left">
-      {/* Spotlight overlay */}
-      <Spotlight className="-top-40 left-0 md:left-10 lg:left-20 md:-top-20" fill="#00E5FF" />
-
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full pt-20">
 
         {/* Left: Heading & Content */}
         <div className="lg:col-span-8 flex flex-col items-start text-left">
-          <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-white max-w-3xl animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight text-white max-w-3xl animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
             Your numbers have a story.<br />
-            We make sure investors <span className="text-[#38BDF8] italic font-extrabold inline-block mr-2">BELIEVE</span>{"\u00A0"} it.
+            We make sure investors{" "}
+            <span className="relative inline-block mr-2 group/believe">
+              <span className="relative z-10 text-[#38BDF8] italic font-bold underline hover:text-white transition-colors duration-300">
+                BELIEVE
+              </span>
+            </span>
+            {"\u00A0"}it.
           </h1>
 
           <p className="mt-6 text-slate-400 text-sm sm:text-base max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 leading-relaxed">
