@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Navbar from "@/components/navbar";
-import Hero from "@/components/hero";
-import About from "@/components/about";
-import Services from "@/components/services";
-import Contact from "@/components/contact";
-import Faq from "@/components/faq";
-import Footer from "@/components/footer";
-import ChatBubble from "@/components/chat-bubble";
+import Navbar from "@/components/ui/navbar";
+import Hero from "@/components/ui/hero";
+import About from "@/components/ui/about";
+import Services from "@/components/ui/services";
+import Contact from "@/components/ui/contact";
+import Faq from "@/components/ui/faq";
+import Footer from "@/components/ui/footer";
+import ChatBubble from "@/components/ui/chat-bubble";
 
 export default function Home() {
   // Dynamic scroll state to track which section is currently in viewport

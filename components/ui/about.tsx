@@ -36,8 +36,8 @@ export default function About() {
           <h2 className="font-serif-heading text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl leading-tight mt-3">
             Built for Ambition.<br />Trusted by Investors.
           </h2>
-          <p className="mt-6 text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            We partner with ambitious founders to establish equity preservation strategies, simulate future capital rounds, and build institutional financial models.
+          <p className="mt-6 text-slate-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            We help founders raise capital with confidence through independent business valuations trusted by investors.
           </p>
         </div>
 
@@ -67,12 +67,12 @@ export default function About() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50/50 px-2.5 py-1 rounded-md border border-blue-100/50">
                   Advisory
                 </span>
-                <TrendingUp className="h-5 w-5 text-slate-400 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300" />
+                <TrendingUp className="h-5 w-5 text-slate-500 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300" />
               </div>
               <h3 className="font-serif-heading text-2xl font-extrabold text-slate-900 mt-8 leading-tight">
                 Valuation Advisory
               </h3>
-              <p className="text-slate-600 text-sm mt-4 leading-relaxed font-sans font-medium">
+              <p className="text-slate-700 text-sm mt-4 leading-relaxed font-sans font-medium">
                 We deliver independent, data-driven valuation advisory founded on rigorous financial analysis and globally accepted methodologies. Our valuations are built to stand up to investor scrutiny, support strategic decision-making, and provide a defensible basis for business and investment discussions.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function About() {
             {/* Bottom Meta */}
             <div className="relative z-10 border-t border-slate-100 pt-6 flex items-center justify-between mt-10">
               <div className="flex flex-col">
-                <span className="text-[9px] uppercase tracking-widest text-slate-400 font-extrabold">
+                <span className="text-[9px] uppercase tracking-widest text-slate-650 font-extrabold">
                   Advisory Framework
                 </span>
                 <span className="text-xs font-extrabold text-slate-800 tracking-tight mt-0.5">
@@ -112,7 +112,7 @@ export default function About() {
               <h3 className="font-serif-heading text-2xl font-extrabold text-white mt-8 leading-tight">
                 Independent Assessment
               </h3>
-              <p className="text-sky-100/80 text-sm mt-4 leading-relaxed font-sans font-medium">
+              <p className="text-sky-100 text-sm mt-4 leading-relaxed font-sans font-medium">
                 We provide an independent assessment of existing valuation reports through an objective review of methodologies, assumptions, and conclusions. Our goal is to strengthen confidence by delivering an unbiased and well-reasoned perspective.
               </p>
             </div>
@@ -120,7 +120,7 @@ export default function About() {
             {/* Bottom Meta */}
             <div className="relative z-10 border-t border-sky-950 pt-6 flex items-center justify-between mt-10">
               <div className="flex flex-col">
-                <span className="text-[9px] uppercase tracking-widest text-sky-500 font-extrabold">
+                <span className="text-[9px] uppercase tracking-widest text-sky-400 font-extrabold">
                   Independent Audit
                 </span>
                 <span className="text-xs font-extrabold text-white tracking-tight mt-0.5">
@@ -162,7 +162,7 @@ export default function About() {
               <h3 className="font-serif-heading text-2xl font-extrabold text-white mt-8 leading-tight">
                 Market Insights
               </h3>
-              <p className="text-slate-300 text-sm mt-4 leading-relaxed font-sans font-medium">
+              <p className="text-slate-200 text-sm mt-4 leading-relaxed font-sans font-medium">
                 We share thoughtful perspectives on valuation, financial markets, and the broader economic landscape through well-researched insights. Our aim is to help businesses and investors navigate an evolving market environment with greater clarity and confidence.
               </p>
             </div>
@@ -170,7 +170,7 @@ export default function About() {
             {/* Bottom Meta */}
             <div className="relative z-10 border-t border-slate-900 pt-6 flex items-center justify-between mt-10">
               <div className="flex flex-col">
-                <span className="text-[9px] uppercase tracking-widest text-slate-500 font-extrabold">
+                <span className="text-[9px] uppercase tracking-widest text-slate-400 font-extrabold">
                   Market Perspectives
                 </span>
                 <span className="text-xs font-extrabold text-white tracking-tight mt-0.5">

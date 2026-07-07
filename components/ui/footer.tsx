@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="border-t border-slate-200 bg-gradient-to-br from-[#F3F4F6] via-[#EBF3FC] to-[#E2E8F0] py-12 px-6 sm:px-8 lg:px-12 text-slate-600"
+      className="border-t border-slate-200 bg-gradient-to-br from-[#F3F4F6] via-[#EBF3FC] to-[#E2E8F0] py-12 px-6 sm:px-8 lg:px-12 text-slate-700"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12">
@@ -15,19 +15,19 @@ export default function Footer() {
               alt="Founder's Equity Logo"
               width={175}
               height={80}
-              className="h-14 w-auto object-contain opacity-95 invert"
+              className="h-14 w-auto object-contain opacity-95 invert -ml-3"
             />
-            <p className="mt-6 text-xs leading-relaxed text-slate-500 max-w-md">
-              Disclaimer: Founder's Equity is a financial advisory and consulting firm. We do not provide legal,
-              accounting, tax, or SEC broker-dealer services. All advisory models and illustrative summaries are for
-              planning purposes.
+            <p className="mt-6 text-xs leading-relaxed text-slate-600 max-w-md">
+              Disclaimer: We provide independent business valuation and financial advisory services only. 
+              We do not offer legal, tax, audit, accounting, investment, or regulated brokerage services. 
+              Opinions are engagement-specific and do not constitute investment, legal, or tax advice.
             </p>
           </div>
 
           {/* Quick Links (Middle-Left) */}
           <div className="md:col-span-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-blue-600">Website</h4>
-            <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-500">
+            <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-600">
               <li>
                 <a href="#home" className="hover:text-blue-600 transition-colors">
                   Home
@@ -59,7 +59,7 @@ export default function Footer() {
           {/* Social Links (Middle-Right Column) */}
           <div className="md:col-span-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-blue-600">Publications &amp; Social</h4>
-            <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-500">
+            <ul className="mt-4 space-y-2 text-xs font-semibold text-slate-600">
               <li>
                 <a
                   href="https://www.linkedin.com/in/amogh-shirke"
@@ -96,7 +96,7 @@ export default function Footer() {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=amoghshirke.valuation@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-600 transition-colors font-semibold text-slate-700 block mt-4"
+              className="hover:text-blue-600 transition-colors font-semibold text-slate-800 block mt-4"
             >
               amoghshirke.valuation@gmail.com
             </a>
@@ -104,16 +104,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="mt-12 border-t border-slate-300 pt-6 flex flex-col justify-between gap-4 sm:flex-row text-[10px] font-semibold text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Founder's Equity Partners Inc. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-blue-600 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-blue-600 transition-colors">
-              Terms of Advisory
-            </a>
-          </div>
+        <div className="mt-12 border-t border-slate-300 pt-6 flex flex-col justify-between gap-4 sm:flex-row text-[10px] font-semibold text-slate-600">
+
         </div>
       </div>
     </footer>

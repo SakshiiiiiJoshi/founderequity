@@ -23,9 +23,8 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
             width={180}
             height={90}
             priority
-            className={`h-12 md:h-[3.5rem] w-auto object-contain transition-all duration-300 ${
-              isLightSection ? "invert" : ""
-            }`}
+            className={`h-12 md:h-[3.5rem] w-auto object-contain transition-all duration-300 ${isLightSection ? "invert" : ""
+              }`}
           />
         </a>
 
@@ -33,41 +32,36 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
         <nav className="hidden md:flex items-center bg-[#0D1B2A]/70 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10 text-[11px] font-bold uppercase tracking-wider text-white/70 shadow-lg gap-1">
           <a
             href="#home"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
-              activeSection === "home" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
-            }`}
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "home" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
           >
             Home
           </a>
           <a
             href="#about"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
-              activeSection === "about" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
-            }`}
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "about" ? "bg-palette-sky/20 text-palette-sky" : "hover:text-white"
+              }`}
           >
             About
           </a>
           <a
             href="#service"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
-              activeSection === "service" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
-            }`}
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "service" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
+              }`}
           >
             Service
           </a>
           <a
             href="#contact"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
-              activeSection === "contact" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
-            }`}
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "contact" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
+              }`}
           >
             Contact
           </a>
           <a
             href="#faq"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
-              activeSection === "faq" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
-            }`}
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "faq" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
+              }`}
           >
             FAQ
           </a>
@@ -77,11 +71,10 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
         <div className="hidden md:flex items-center">
           <a
             href="#contact"
-            className={`rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 ${
-              isLightSection
-                ? "bg-[#050B14] text-white hover:bg-[#0B1528] shadow-[0_0_15px_rgba(0,0,0,0.1)]"
-                : "bg-white text-black hover:bg-neutral-100"
-            }`}
+            className={`rounded-full px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-1.5 ${isLightSection
+              ? "bg-[#050B14] text-white hover:bg-[#0B1528] shadow-[0_0_15px_rgba(0,0,0,0.1)]"
+              : "bg-white text-black hover:bg-neutral-100"
+              }`}
           >
             Get in Touch <span className="text-xs">➔</span>
           </a>
@@ -90,9 +83,8 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className={`rounded-full p-2 focus:outline-none md:hidden mr-1 transition-all duration-300 ${
-            isLightSection ? "text-slate-900 hover:bg-black/5" : "text-white hover:bg-white/10"
-          }`}
+          className={`rounded-full p-2 focus:outline-none md:hidden mr-1 transition-all duration-300 ${isLightSection ? "text-slate-900 hover:bg-black/5" : "text-white hover:bg-white/10"
+            }`}
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? (

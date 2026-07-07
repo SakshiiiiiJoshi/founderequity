@@ -13,7 +13,7 @@ export default function Services() {
           <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Our Services
           </p>
-          <p className="mt-4 text-slate-400">
+          <p className="mt-4 text-slate-300">
             Precision capital advisory services engineered to protect founders through seed, growth, and exit phases.
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   Startup Valuation
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Know what your startup is worth before fundraising. Get data-driven valuations for Idea,
                   Pre-Seed, Seed, and Growth-stage startups using industry-standard methodologies.
                 </p>
@@ -60,7 +60,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   Seed & Angel Round Valuation
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Raise capital with confidence. Determine a fair valuation for angel investors and
                   early-stage funding rounds based on traction, market size, team strength, and growth potential.
                 </p>
@@ -84,7 +84,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   MSME Business Valuation
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Understand the true value of your business. Ideal for MSMEs seeking funding, partnerships,
                   mergers, acquisitions, or strategic planning.
                 </p>
@@ -108,7 +108,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   Series A, B & C Valuation
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Built for scaling companies. Advanced valuation models considering revenue growth, market
                   expansion, financial performance, and future projections.
                 </p>
@@ -132,7 +132,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   ESOP Valuation
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Create employee ownership plans with accuracy. Determine the fair market value of shares
                   for ESOP issuance, employee buybacks, and compliance requirements.
                 </p>
@@ -156,7 +156,7 @@ export default function Services() {
                 <h3 className="font-serif-heading text-xl font-bold text-white uppercase tracking-wider">
                   Second Opinion Valuation (Free)
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-slate-300 opacity-90 group-hover/card:opacity-100 transition-opacity duration-500">
+                <p className="mt-3 text-xs leading-relaxed text-slate-200 group-hover/card:opacity-100 transition-opacity duration-500">
                   Already have a valuation report? Verify it. Get an independent expert review of your
                   existing valuation and identify assumptions, risks, and hidden gaps.
                 </p>

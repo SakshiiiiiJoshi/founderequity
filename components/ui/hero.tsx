@@ -1,4 +1,4 @@
-import HeroParallaxDemo from "@/components/hero-parallax-demo";
+import HeroParallaxDemo from "@/components/ui/hero-parallax-demo";
 
 export default function Hero() {
   return (

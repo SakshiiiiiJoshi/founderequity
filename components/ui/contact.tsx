@@ -45,7 +45,7 @@ export default function Contact() {
               <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                 Get in Touch
               </p>
-              <p className="mt-4 text-slate-600 max-w-md">
+              <p className="mt-4 text-slate-700 max-w-md">
                 Schedule a private advisory consultation. We will analyze your cap structure, simulate future funding
                 rounds, and establish equity preservation strategies.
               </p>
@@ -68,7 +68,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
                       Email
                     </p>
                     <span className="text-sm font-semibold text-slate-800 hover:underline">
@@ -89,7 +89,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
                       LinkedIn
                     </p>
                     <span className="text-sm font-semibold text-slate-800 hover:underline">
@@ -110,7 +110,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
                       Substack
                     </p>
                     <span className="text-sm font-semibold text-slate-800 hover:underline">
@@ -133,7 +133,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <h3 className="font-serif-heading text-lg font-bold text-slate-900 mt-4">Message Sent</h3>
-                  <p className="text-sm text-slate-500 mt-2 max-w-sm mx-auto">
+                  <p className="text-sm text-slate-700 mt-2 max-w-sm mx-auto">
                     Thank you for reaching out. An advisor will contact you within 24 hours.
                   </p>
                 </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                      <label htmlFor="name" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
                         Full Name
                       </label>
                       <input
@@ -155,7 +155,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                      <label htmlFor="email" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
                         Work Email
                       </label>
                       <input
@@ -171,7 +171,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <label htmlFor="message" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
                       Message
                     </label>
                     <textarea

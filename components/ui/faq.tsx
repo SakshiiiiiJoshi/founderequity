@@ -62,7 +62,7 @@ export default function Faq() {
           <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Frequently Asked Questions
           </p>
-          <p className="mt-4 text-slate-400">
+          <p className="mt-4 text-slate-300">
             Quick answers to common questions about our valuation methodologies, timelines, and advisory services.
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function Faq() {
                     {faq.q}
                   </h4>
                   <ChevronDown
-                    className={`h-5 w-5 text-slate-400 group-hover:text-[#38BDF8] transition-transform duration-300 shrink-0 ${
+                    className={`h-5 w-5 text-slate-300 group-hover:text-[#38BDF8] transition-transform duration-300 shrink-0 ${
                       isOpen ? "rotate-180 text-[#38BDF8]" : ""
                     }`}
                   />
@@ -109,7 +109,7 @@ export default function Faq() {
           <h4 className="font-serif-heading text-lg font-bold text-white uppercase tracking-wider">
             Still have questions?
           </h4>
-          <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
             Schedule a confidential consultation, and we'll be happy to discuss your valuation requirements and
             recommend the most suitable approach for your business.
           </p>

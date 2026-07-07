@@ -172,8 +172,8 @@ export const Header = () => {
             {"\u00A0"}it.
           </h1>
 
-          <p className="mt-6 text-slate-400 text-sm sm:text-base max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 leading-relaxed">
-            We partner with ambitious founders to establish equity preservation strategies, simulate future capital rounds, and build institutional financial models.
+          <p className="mt-6 text-slate-300 text-sm sm:text-base max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 leading-relaxed">
+            We help founders raise capital with confidence through independent business valuations trusted by investors.
           </p>
 
           {/* Left-aligned buttons */}
@@ -195,7 +195,7 @@ export const Header = () => {
       </div>
 
       {/* Bottom right: Scroll indicator */}
-      <div className="absolute bottom-8 right-6 sm:right-12 hidden md:flex items-center gap-2 text-slate-500 text-[10px] uppercase tracking-widest animate-pulse z-20">
+      <div className="absolute bottom-8 right-6 sm:right-12 hidden md:flex items-center gap-2 text-slate-400 text-[10px] uppercase tracking-widest animate-pulse z-20">
         <span>Scroll to Explore</span>
         <svg className="w-3 h-3 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
