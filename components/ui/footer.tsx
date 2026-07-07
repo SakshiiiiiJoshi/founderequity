@@ -105,7 +105,10 @@ export default function Footer() {
 
         {/* Bottom Copyright */}
         <div className="mt-12 border-t border-slate-300 pt-6 flex flex-col justify-between gap-4 sm:flex-row text-[10px] font-semibold text-slate-600">
-
+          <p>&copy; {new Date().getFullYear()} Founder's Equity. All rights reserved.</p>
+          <p>
+            Developed by Sakshi Joshi &nbsp;|&nbsp; Contact: <a href="mailto:joshisakshi1204@gmail.com" className="hover:text-blue-600 transition-colors">joshisakshi1204@gmail.com</a>
+          </p>
         </div>
       </div>
     </footer>
