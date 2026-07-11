@@ -34,18 +34,18 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 bg-gradient-to-br from-[#F3F4F6] via-[#EBF3FC] to-[#E2E8F0] border-t border-slate-200"
+      className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 bg-gradient-to-b from-[#050B14] via-[#0B1528] to-[#030712] border-t border-white/5"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Contact Information */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-blue-600">Inquiries</h2>
-              <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-[#38BDF8]">Inquiries</h2>
+              <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Get in Touch
               </p>
-              <p className="mt-4 text-slate-700 max-w-md">
+              <p className="mt-4 text-slate-300 max-w-md">
                 Schedule a private advisory consultation. We will analyze your cap structure, simulate future funding
                 rounds, and establish equity preservation strategies.
               </p>
@@ -57,7 +57,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-[#38BDF8] group-hover:bg-white/10 group-hover:text-white transition-colors">
                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
@@ -68,10 +68,10 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">
                       Email
                     </p>
-                    <span className="text-sm font-semibold text-slate-800 hover:underline">
+                    <span className="text-sm font-semibold text-slate-200 hover:underline">
                       amoghshirke.valuation@gmail.com
                     </span>
                   </div>
@@ -83,16 +83,16 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-[#38BDF8] group-hover:bg-white/10 group-hover:text-white transition-colors">
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">
                       LinkedIn
                     </p>
-                    <span className="text-sm font-semibold text-slate-800 hover:underline">
+                    <span className="text-sm font-semibold text-slate-200 hover:underline">
                       amogh-shirke
                     </span>
                   </div>
@@ -104,16 +104,16 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 text-[#38BDF8] group-hover:bg-white/10 group-hover:text-white transition-colors">
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M22.539 8.242H1.46V5.406h21.078v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.078V0z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold group-hover:text-slate-700 transition-colors">
+                    <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">
                       Substack
                     </p>
-                    <span className="text-sm font-semibold text-slate-800 hover:underline">
+                    <span className="text-sm font-semibold text-slate-200 hover:underline">
                       The Bombay Valuation Desk
                     </span>
                   </div>
@@ -124,16 +124,16 @@ export default function Contact() {
 
           {/* Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg sm:p-8 hover:border-blue-400/40 transition-all duration-300">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6 shadow-2xl sm:p-8 hover:border-[#38BDF8]/40 transition-all duration-300">
               {formSubmitted ? (
                 <div className="py-12 text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-50 border border-green-200 text-green-600">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20 text-green-400">
                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="font-serif-heading text-lg font-bold text-slate-900 mt-4">Message Sent</h3>
-                  <p className="text-sm text-slate-700 mt-2 max-w-sm mx-auto">
+                  <h3 className="font-serif-heading text-lg font-bold text-white mt-4">Message Sent</h3>
+                  <p className="text-sm text-slate-300 mt-2 max-w-sm mx-auto">
                     Thank you for reaching out. An advisor will contact you within 24 hours.
                   </p>
                 </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                 <form onSubmit={handleContactSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                      <label htmlFor="name" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                         Full Name
                       </label>
                       <input
@@ -150,12 +150,12 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors"
+                        className="mt-2 w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-white/20 focus:border-[#38BDF8] focus:bg-white/[0.06] focus:outline-none transition-colors"
                         placeholder="Alex Chen"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                      <label htmlFor="email" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                         Work Email
                       </label>
                       <input
@@ -164,14 +164,14 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors"
+                        className="mt-2 w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-white/20 focus:border-[#38BDF8] focus:bg-white/[0.06] focus:outline-none transition-colors"
                         placeholder="alex@company.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                    <label htmlFor="message" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                       Message
                     </label>
                     <textarea
@@ -180,14 +180,14 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors"
+                      className="mt-2 w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-white/20 focus:border-[#38BDF8] focus:bg-white/[0.06] focus:outline-none transition-colors"
                       placeholder="Tell us about your venture advisory or capital structuring goals..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full rounded-full bg-blue-600 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg focus:outline-none cursor-pointer"
+                    className="w-full rounded-full bg-[#38BDF8] py-4 text-sm font-bold uppercase tracking-wider text-slate-950 shadow-md hover:bg-[#00E5FF] hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all focus:outline-none cursor-pointer"
                   >
                     Send Message
                   </button>

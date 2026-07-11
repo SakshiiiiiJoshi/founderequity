@@ -52,18 +52,18 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
             Service
           </a>
           <a
-            href="#contact"
-            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "contact" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
-              }`}
-          >
-            Contact
-          </a>
-          <a
             href="#faq"
             className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "faq" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
               }`}
           >
             FAQ
+          </a>
+          <a
+            href="#contact"
+            className={`px-4 py-1.5 rounded-full transition-all duration-300 ${activeSection === "contact" ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "hover:text-white"
+              }`}
+          >
+            Contact
           </a>
         </nav>
 
@@ -125,18 +125,18 @@ export default function Navbar({ activeSection, isLightSection }: NavbarProps) {
               Service
             </a>
             <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`py-2 border-b border-white/5 ${activeSection === "contact" ? "text-palette-sky" : "hover:text-white"}`}
-            >
-              Contact
-            </a>
-            <a
               href="#faq"
               onClick={() => setMobileMenuOpen(false)}
               className={`py-2 border-b border-white/5 ${activeSection === "faq" ? "text-palette-sky" : "hover:text-white"}`}
             >
               FAQ
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`py-2 border-b border-white/5 ${activeSection === "contact" ? "text-palette-sky" : "hover:text-white"}`}
+            >
+              Contact
             </a>
             <a
               href="#contact"

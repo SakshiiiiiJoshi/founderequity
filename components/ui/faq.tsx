@@ -53,16 +53,16 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 bg-gradient-to-b from-[#050B14] via-[#0B1528] to-[#030712] border-t border-white/5"
+      className="py-20 px-6 sm:px-8 lg:px-12 lg:py-28 bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0] border-t border-slate-200"
     >
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-[#38BDF8]">FAQ</h2>
-          <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-blue-600">FAQ</h2>
+          <p className="font-serif-heading mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Frequently Asked Questions
           </p>
-          <p className="mt-4 text-slate-300">
+          <p className="mt-4 text-slate-700">
             Quick answers to common questions about our valuation methodologies, timelines, and advisory services.
           </p>
         </div>
@@ -75,15 +75,15 @@ export default function Faq() {
               <div
                 key={index}
                 onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                className="group border border-white/5 bg-[#09111E]/40 rounded-2xl p-6 cursor-pointer hover:border-[#38BDF8]/40 transition-all duration-300"
+                className="group border border-slate-200/80 bg-white rounded-2xl p-6 cursor-pointer hover:border-blue-500/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)]"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h4 className="font-sans text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors duration-200">
+                  <h4 className="font-sans text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-200">
                     {faq.q}
                   </h4>
                   <ChevronDown
-                    className={`h-5 w-5 text-slate-300 group-hover:text-[#38BDF8] transition-transform duration-300 shrink-0 ${
-                      isOpen ? "rotate-180 text-[#38BDF8]" : ""
+                    className={`h-5 w-5 text-slate-500 group-hover:text-blue-600 transition-transform duration-300 shrink-0 ${
+                      isOpen ? "rotate-180 text-blue-600" : ""
                     }`}
                   />
                 </div>
@@ -94,7 +94,7 @@ export default function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-sm leading-relaxed text-slate-300 border-t border-white/5 pt-4">
+                    <p className="text-sm leading-relaxed text-slate-600 border-t border-slate-100 pt-4">
                       {faq.a}
                     </p>
                   </div>
@@ -105,18 +105,18 @@ export default function Faq() {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="mt-16 text-center bg-[#09111E]/40 border border-white/5 rounded-2xl p-8 max-w-2xl mx-auto backdrop-blur-sm shadow-lg hover:border-[#38BDF8]/20 transition-all duration-300">
-          <h4 className="font-serif-heading text-lg font-bold text-white uppercase tracking-wider">
+        <div className="mt-16 text-center bg-white border border-slate-200/80 rounded-2xl p-8 max-w-2xl mx-auto shadow-lg hover:border-blue-500/20 transition-all duration-300">
+          <h4 className="font-serif-heading text-lg font-bold text-slate-900 uppercase tracking-wider">
             Still have questions?
           </h4>
-          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+          <p className="mt-3 text-sm text-slate-600 leading-relaxed">
             Schedule a confidential consultation, and we'll be happy to discuss your valuation requirements and
             recommend the most suitable approach for your business.
           </p>
           <div className="mt-6">
             <a
               href="#contact"
-              className="inline-flex rounded-full bg-white px-8 py-3 text-xs font-bold uppercase tracking-wider text-black shadow-md transition-all hover:bg-neutral-100 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] cursor-pointer"
+              className="inline-flex rounded-full bg-[#050B14] px-8 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#0B1528] hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.15)] cursor-pointer"
             >
               Schedule Consultation
             </a>

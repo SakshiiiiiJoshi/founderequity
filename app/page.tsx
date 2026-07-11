@@ -13,11 +13,11 @@ import ChatBubble from "@/components/ui/chat-bubble";
 export default function Home() {
   // Dynamic scroll state to track which section is currently in viewport
   const [activeSection, setActiveSection] = useState("home");
-  const isLightSection = activeSection === "about" || activeSection === "contact" || activeSection === "footer";
+  const isLightSection = activeSection === "about" || activeSection === "faq";
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "service", "contact", "faq", "footer"];
+      const sections = ["home", "about", "service", "faq", "contact", "footer"];
 
       // Force footer active when scrolled to the absolute bottom of the page
       const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
@@ -52,8 +52,8 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
-        <Contact />
         <Faq />
+        <Contact />
       </main>
 
       <Footer />

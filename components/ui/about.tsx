@@ -43,9 +43,8 @@ export default function About() {
 
         {/* 3-Card Grid with Minimalist Premium Design */}
         <div
-          className={`grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-1000 ease-out transform ${
-            isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-1000 ease-out transform ${isAboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
         >
           {/* Card 1: Valuation Advisory (Light Card) */}
           <div className="group relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 hover:border-blue-500/30 hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between min-h-[460px] p-8 shadow-[0_15px_40px_rgba(0,0,0,0.015)] hover:shadow-[0_25px_50px_rgba(37,99,235,0.06)]">
