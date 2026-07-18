@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
 import {
   Rocket,
   Lightbulb,
@@ -11,8 +11,6 @@ import {
   PieChart,
   BookOpen,
   ShieldCheck,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { motion, useInView } from "motion/react";
 
@@ -99,69 +97,23 @@ const services = [
    Component
    ────────────────────────────────────────────── */
 export default function Services() {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  /* ── Scroll state tracker ── */
-  const updateScrollState = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-
-    // Calculate active dot
-    const cardWidth = el.querySelector<HTMLElement>("[data-card]")?.offsetWidth ?? 340;
-    const gap = 24;
-    const idx = Math.round(el.scrollLeft / (cardWidth + gap));
-    setActiveIndex(Math.min(idx, services.length - 1));
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.addEventListener("scroll", updateScrollState, { passive: true });
-    updateScrollState();
-    return () => el.removeEventListener("scroll", updateScrollState);
-  }, [updateScrollState]);
-
-  /* ── Arrow scroll handler ── */
-  const scroll = (dir: "left" | "right") => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cardWidth = el.querySelector<HTMLElement>("[data-card]")?.offsetWidth ?? 340;
-    const gap = 24;
-    const amount = (cardWidth + gap) * 2;
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
-
-  /* ── Dot click handler ── */
-  const scrollToIndex = (idx: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cardWidth = el.querySelector<HTMLElement>("[data-card]")?.offsetWidth ?? 340;
-    const gap = 24;
-    el.scrollTo({ left: idx * (cardWidth + gap), behavior: "smooth" });
-  };
 
   return (
     <section
       ref={sectionRef}
       id="service"
-      className="relative bg-gradient-to-b from-[#050B14] via-[#0A1224] to-[#050B14] py-20 px-0 lg:py-28 border-t border-white/5 overflow-hidden"
+      className="relative bg-gradient-to-b from-[#050B14] via-[#0A1224] to-[#050B14] py-20 px-6 sm:px-8 lg:px-12 lg:py-28 border-t border-white/5 overflow-hidden"
     >
       {/* ── Ambient glow decorations ── */}
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-[#38BDF8]/[0.04] blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-32 right-1/4 h-[400px] w-[400px] rounded-full bg-[#818CF8]/[0.04] blur-[120px]" />
 
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto max-w-7xl">
         {/* ── Header ── */}
         <motion.div
-          className="text-center max-w-2xl mx-auto px-6 sm:px-8"
+          className="text-center max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -177,38 +129,14 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* ── Navigation arrows (desktop) ── */}
-        <div className="hidden sm:flex items-center justify-end gap-2 px-6 sm:px-8 lg:px-12 mt-10 mb-4">
-          <button
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft}
-            aria-label="Scroll services left"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight}
-            aria-label="Scroll services right"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-
-        {/* ── Horizontal scroll container ── */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 sm:px-8 lg:px-12 pb-4 mt-4 sm:mt-0 hide-scrollbar"
-        >
+        {/* ── 3x3 Grid ── */}
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                data-card
-                className="group relative flex-shrink-0 w-[300px] sm:w-[340px] snap-start"
+                className="group relative"
                 initial={{ opacity: 0, y: 40, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{
@@ -217,7 +145,7 @@ export default function Services() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
-                <div className="relative overflow-hidden rounded-2xl h-[400px] border border-white/[0.06] shadow-lg bg-[#09111E] hover:border-white/15 transition-all duration-500 cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl h-[380px] border border-white/[0.06] shadow-lg bg-[#09111E] hover:border-white/15 transition-all duration-500 cursor-pointer">
                   {/* Card image */}
                   <img
                     src={service.image}
@@ -262,7 +190,7 @@ export default function Services() {
                         )}
                       </div>
 
-                      {/* Description — fades in on hover */}
+                      {/* Description */}
                       <p className="mt-2.5 text-[13px] leading-relaxed text-slate-300/80 line-clamp-4 group-hover:text-slate-200 transition-colors duration-500">
                         {service.description}
                       </p>
@@ -279,24 +207,7 @@ export default function Services() {
             );
           })}
         </div>
-
-        {/* ── Scroll indicator dots ── */}
-        <div className="flex items-center justify-center gap-1.5 mt-6 px-6">
-          {services.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => scrollToIndex(i)}
-              aria-label={`Go to service ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === activeIndex
-                  ? "w-6 h-2 bg-[#38BDF8]"
-                  : "w-2 h-2 bg-white/20 hover:bg-white/40"
-              }`}
-            />
-          ))}
-        </div>
       </div>
-
     </section>
   );
 }
