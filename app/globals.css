@@ -276,3 +276,20 @@ body {
 .grid-line-glow {
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.05) 10%, rgba(255, 255, 255, 0.05) 90%, transparent);
 }
+
+/* Hide scrollbar for services horizontal scroll */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Line clamp utility */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
