@@ -17,8 +17,43 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Founder's Equity | Capital Advisory & Equity Solutions",
-  description: "Strategic equity advisory and capital management solutions built for visionary founders. Align interests, model growth, and secure your financial legacy.",
+  metadataBase: new URL("https://www.foundersequity.in"),
+
+  title: {
+    default: "Founder's Equity | Business Valuation & Capital Advisory",
+    template: "%s | Founder's Equity",
+  },
+
+  description:
+    "Professional business valuation, startup valuation, fundraising valuation, ESOP valuation and capital advisory services in India.",
+
+  keywords: [
+    "Business Valuation India",
+    "Startup Valuation Services",
+    "Fundraising Valuation",
+    "MSME Valuation",
+    "ESOP Valuation",
+    "Capital Advisory",
+  ],
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "Founder's Equity | Business Valuation & Capital Advisory",
+    description:
+      "Business valuation and capital advisory services for startups and businesses.",
+    url: "https://www.foundersequity.in",
+    siteName: "Founder's Equity",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   icons: {
     icon: "/logo-icon-v2.png",
     shortcut: "/logo-icon-v2.png",
